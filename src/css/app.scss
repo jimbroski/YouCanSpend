@@ -1,0 +1,53 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Noto+Serif:400,400i,700,700i');
+
+// Typography
+$font-family: "Noto Sans", Helvetica, Arial, sans-serif;
+
+body {
+  font-family: $font-family;
+  background-color: #EBEBEB;
+}
+main {
+  background-color: white;
+}
+
+// Helper
+.text-center {
+  text-align: center;
+}
+.padding-30 {
+  padding: 30px;
+}
+
+// Layout
+.mdl-layout__header-row {
+  padding-left: 16px;
+}
+
+// Budgets
+#amount_current {
+  background-color: #EBEBEB;
+  .amount {
+    padding: 46px 10px 20px;
+    font-size: 3em;
+  }
+  .name {
+    font-size: 1.1em;
+    padding-bottom: 20px;
+
+    a {
+      color: #aaa;
+    }
+    i {
+      font-size: inherit;
+      margin-left: 4px;
+    }
+  }
+}
+#budget_add_spending {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
