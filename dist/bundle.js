@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -102,9 +102,144 @@ var Layout = function () {
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_budget__ = __webpack_require__(5);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+
+
+var Index = function () {
+  function Index() {
+    _classCallCheck(this, Index);
+
+    // Inizialize Variables
+    this.budgets = this.getAllBudgets();
+    this.current_budget = this.getCurrentBudget();
+    // Inizialize Views
+    this.renderTemplates();
+    this.bindFunctions();
+  }
+
+  _createClass(Index, [{
+    key: "renderTemplates",
+
+
+    // Constructor Methods
+    value: function renderTemplates() {
+      this.renderAllBudgets();
+      // document.querySelector('#root').innerHTML = this.templateList();
+      // document.querySelectorAll('.budget_list_item').addEventListener("click", this.showCurrentBudget);
+      // Array.from(document.querySelectorAll('.budget_list_item')).forEach(e => e.addEventListener("click", this.showCurrentBudget));
+    }
+  }, {
+    key: "bindFunctions",
+    value: function bindFunctions() {
+      // document.querySelector('.budget_list_item').addEventListener("click", this.showCurrentBudget);
+      // document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
+    }
+  }, {
+    key: "getAllBudgets",
+
+
+    // Custom Methods
+    value: function getAllBudgets() {
+      // Get all Records
+      var records = {
+        "1": {
+          name: "groceries",
+          amount: 123.34
+        },
+        "2": {
+          name: "beer",
+          amount: 212.34
+        },
+        "3": {
+          name: "cars",
+          amount: 9999.93
+        },
+        "4": {
+          name: "incusrance",
+          amount: 123.34
+        },
+        "5": {
+          name: "and",
+          amount: 123.34
+        }
+      };
+      var record_ids = Object.keys(records);
+
+      // Initialize object for each record and add it to an array
+      var all_objects = [];
+
+      record_ids.forEach(function (record_id) {
+        records[record_id].id = record_id;
+        var new_budget = new __WEBPACK_IMPORTED_MODULE_0__components_budget__["a" /* default */](records[record_id]);
+        all_objects.push(new_budget);
+      });
+
+      return all_objects;
+    }
+  }, {
+    key: "getCurrentBudget",
+    value: function getCurrentBudget() {
+      // TODO use current route in URL to determine current Budget
+      return false;
+    }
+  }, {
+    key: "renderAllBudgets",
+
+
+    // showCurrentBudget(e){
+    //   // console.log(e.target);
+    //   console.log(this);
+    //   // let currentBudget = new Budget({
+    //   //   amount: budget.amount,
+    //   //   name: budget.name
+    //   // });
+    //   // return currentBudget.templateListItem();
+    // }
+
+    // submitBudget(){
+    //   function getAndValidateAmount(){
+    //     return document.querySelector('#Budget_amount').value;
+    //   };
+    //
+    //   function getAndValidateName(){
+    //     return  document.querySelector('#Budget_name').value;
+    //   }
+    //
+    //   let newBudget = new Budget({
+    //     amount: getAndValidateAmount(),
+    //     name: getAndValidateName()
+    //   });
+    //   document.querySelector('#root').innerHTML = newBudget.templateListItem();
+    //   console.log(newBudget);
+    // }
+
+    // Templates
+    value: function renderAllBudgets() {
+      console.log(this.budgets);
+      // let result = this.budgets.map(function(budget){
+      //   let newBudget = new Budget({
+      //     amount: budget.amount,
+      //     name: budget.name
+      //   });
+      //   return newBudget.templateListItem();
+      // });
+      // return result.join('');
+    }
+  }]);
+
+  return Index;
+}();
+
+;
+
+/* unused harmony default export */ var _unused_webpack_default_export = new Index();
 
 /***/ }),
 /* 2 */
@@ -114,6 +249,12 @@ var Layout = function () {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 /**
@@ -129,136 +270,7 @@ this.actionHandler_&&(this.actionElement_.textContent=this.actionText_,this.acti
 
 
 /***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_material_design_lite__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_material_design_lite___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_material_design_lite__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_design_lite_dist_material_light_green_amber_min_css__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_design_lite_dist_material_light_green_amber_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_material_design_lite_dist_material_light_green_amber_min_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__css_app_scss__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__css_app_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__css_app_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layout__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages__ = __webpack_require__(6);
-
-
-
-
-
-// Global
-
-
-// Load Page Specific Module
-var current_page = document.querySelector('[data-page]').getAttribute('data-page');
-
-
-/***/ }),
-/* 5 */,
-/* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_budget__ = __webpack_require__(8);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-
-
-var Index = function () {
-  function Index() {
-    _classCallCheck(this, Index);
-
-    this.renderTemplate();
-    this.bindFunctions();
-  }
-
-  _createClass(Index, [{
-    key: 'renderTemplate',
-    value: function renderTemplate() {
-      document.querySelector('#root').innerHTML = this.templateList();
-      document.querySelector('.budget_list_item').addEventListener("click", this.showCurrentBudget);
-    }
-  }, {
-    key: 'bindFunctions',
-    value: function bindFunctions() {
-      // document.querySelector('.budget_list_item').addEventListener("click", this.showCurrentBudget);
-      // document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
-    }
-  }, {
-    key: 'showCurrentBudget',
-    value: function showCurrentBudget(e) {
-      console.log(e);
-      // let currentBudget = new Budget({
-      //   amount: budget.amount,
-      //   name: budget.name
-      // });
-      // return currentBudget.templateListItem();
-    }
-  }, {
-    key: 'submitBudget',
-    value: function submitBudget() {
-      function getAndValidateAmount() {
-        return document.querySelector('#Budget_amount').value;
-      };
-
-      function getAndValidateName() {
-        return document.querySelector('#Budget_name').value;
-      }
-
-      var newBudget = new __WEBPACK_IMPORTED_MODULE_0__components_budget__["a" /* default */]({
-        amount: getAndValidateAmount(),
-        name: getAndValidateName()
-      });
-      document.querySelector('#root').innerHTML = newBudget.templateListItem();
-      console.log(newBudget);
-    }
-
-    // Templates
-
-  }, {
-    key: 'templateList',
-    value: function templateList() {
-      var budgets = [{
-        name: "groceries",
-        amount: 123.34
-      }, {
-        name: "beer",
-        amount: 212.34
-      }, {
-        name: "cars",
-        amount: 9999.93
-      }, {
-        name: "incusrance",
-        amount: 123.34
-      }, {
-        name: "and",
-        amount: 123.34
-      }];
-
-      var result = budgets.map(function (budget) {
-        var newBudget = new __WEBPACK_IMPORTED_MODULE_0__components_budget__["a" /* default */]({
-          amount: budget.amount,
-          name: budget.name
-        });
-        return newBudget.templateListItem();
-      });
-      return result.join('');
-    }
-  }]);
-
-  return Index;
-}();
-
-;
-
-/* unused harmony default export */ var _unused_webpack_default_export = new Index();
-
-/***/ }),
-/* 7 */,
-/* 8 */
+/* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -270,6 +282,7 @@ var Budget = function () {
   function Budget(params) {
     _classCallCheck(this, Budget);
 
+    this.id = params.id;
     this.amount = params.amount;
     this.name = params.name;
     this.icon = "shopping_basket"; // TODO adjustable
@@ -308,6 +321,32 @@ var Budget = function () {
 }();
 
 /* harmony default export */ __webpack_exports__["a"] = Budget;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_material_design_lite__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_material_design_lite___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_material_design_lite__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_design_lite_dist_material_light_green_amber_min_css__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_material_design_lite_dist_material_light_green_amber_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_material_design_lite_dist_material_light_green_amber_min_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__css_app_scss__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__css_app_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__css_app_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__layout__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages__ = __webpack_require__(1);
+
+
+
+
+
+// Global
+
+
+// Load Page Specific Module
+var current_page = document.querySelector('[data-page]').getAttribute('data-page');
+
 
 /***/ })
 /******/ ]);

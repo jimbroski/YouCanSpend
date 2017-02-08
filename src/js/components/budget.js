@@ -1,5 +1,6 @@
 class Budget {
   constructor(params){
+    this.id = params.id;
     this.amount = params.amount;
     this.name = params.name;
     this.icon = "shopping_basket"; // TODO adjustable
