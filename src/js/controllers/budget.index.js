@@ -1,6 +1,6 @@
-import Budget from '../components/budget';
+import Budget from '../models/budget';
 
-class Index {
+class BudgetIndex {
   constructor(){
     // Inizialize Variables
     this.budgets = Budget.all();
@@ -60,4 +60,4 @@ class Index {
   }
 };
 
-export default new Index();
+export default BudgetIndex;

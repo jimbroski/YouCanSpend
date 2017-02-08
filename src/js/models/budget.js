@@ -11,16 +11,16 @@ class Budget extends Record {
     this.item_selector = `budget_item_${this.id}`
   };
 
-  // validate(){
-  //   // TODO validate id uniqueness and presence
-  //   // TODO validate amount being a valid decimal and present
-  //   // TODO validate name presence and length
-  //   // TODO validate icon string is equal to any of the icons
-  // }
-  //
-  // save(){
-  //   // TODO save this budget to firebase?
-  // }
+  validate(){
+    // TODO validate id uniqueness and presence
+    // TODO validate amount being a valid decimal and present
+    // TODO validate name presence and length
+    // TODO validate icon string is equal to any of the icons
+  }
+
+  save(){
+    // TODO save this budget to firebase?
+  }
 
   // Templates
   templateNewBudget(){
