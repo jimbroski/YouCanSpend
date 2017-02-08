@@ -230,91 +230,50 @@ this.actionHandler_&&(this.actionElement_.textContent=this.actionText_,this.acti
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_record_js__ = __webpack_require__(8);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var Budget = function () {
-  _createClass(Budget, null, [{
-    key: "all",
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-    // Class (static) Methods
-    // TODO split these out into something liek ActiveRecord and extent Budget
-    value: function all() {
-      var records = {
-        "1": {
-          name: "groceries",
-          amount: 123.34
-        },
-        "2": {
-          name: "beer",
-          amount: 212.34
-        },
-        "3": {
-          name: "cars",
-          amount: 9999.93
-        },
-        "4": {
-          name: "incusrance",
-          amount: 123.34
-        },
-        "5": {
-          name: "and",
-          amount: 123.34
-        }
-      };
-      // TODO ^ Get those budgets from Firebase or other storage
-
-      var record_ids = Object.keys(records);
-      var all_objects = [];
-
-      record_ids.forEach(function (record_id) {
-        records[record_id].id = record_id;
-        var new_budget = new Budget(records[record_id]);
-        all_objects.push(new_budget);
-      });
-
-      return all_objects;
-    }
-  }, {
-    key: "find",
-    value: function find(id) {}
-    // TODO find record by ID (on firebase?)
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 
-    // Instance Methods
 
-  }]);
+var Budget = function (_Record) {
+  _inherits(Budget, _Record);
 
   function Budget(params) {
     _classCallCheck(this, Budget);
 
-    this.id = params.id;
-    this.amount = params.amount;
-    this.name = params.name;
-    this.icon = "shopping_basket"; // TODO adjustable
+    var _this = _possibleConstructorReturn(this, (Budget.__proto__ || Object.getPrototypeOf(Budget)).call(this));
 
-    this.item_selector = "budget_item_" + this.id;
+    _this.id = params.id;
+    _this.amount = params.amount;
+    _this.name = params.name;
+    _this.icon = "shopping_basket"; // TODO adjustable
+
+    _this.item_selector = "budget_item_" + _this.id;
+    return _this;
   }
 
   _createClass(Budget, [{
-    key: "validate",
-    value: function validate() {
-      // TODO validate id uniqueness and presence
-      // TODO validate amount being a valid decimal and present
-      // TODO validate name presence and length
-      // TODO validate icon string is equal to any of the icons
-    }
-  }, {
-    key: "save",
-    value: function save() {}
-    // TODO save this budget to firebase?
+    key: "templateNewBudget",
 
+
+    // validate(){
+    //   // TODO validate id uniqueness and presence
+    //   // TODO validate amount being a valid decimal and present
+    //   // TODO validate name presence and length
+    //   // TODO validate icon string is equal to any of the icons
+    // }
+    //
+    // save(){
+    //   // TODO save this budget to firebase?
+    // }
 
     // Templates
-
-  }, {
-    key: "templateNewBudget",
     value: function templateNewBudget() {
       return "\n    <div class=\"padding-30\">\n      <div class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\">\n        <input class=\"mdl-textfield__input\" type=\"text\" id=\"Budget_name\">\n        <label class=\"mdl-textfield__label\" for=\"Budget_name\">Budget Name</label>\n      </div>\n      <div class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\">\n        <input class=\"mdl-textfield__input\" type=\"text\" pattern=\"-?[0-9]*(.[0-9]+)?\" id=\"Budget_amount\">\n        <label class=\"mdl-textfield__label\" for=\"Budget_amount\">Budget Amount</label>\n        <span class=\"mdl-textfield__error\">Input is not a number!</span>\n      </div>\n      <button id=\"Budget_submit\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored\">\n        Save Budget\n      </button>\n    </div><!-- /.padding-30 -->";
     }
@@ -331,7 +290,7 @@ var Budget = function () {
   }]);
 
   return Budget;
-}();
+}(__WEBPACK_IMPORTED_MODULE_0__app_record_js__["a" /* default */]);
 
 /* harmony default export */ __webpack_exports__["a"] = Budget;
 
@@ -360,6 +319,101 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // Load Page Specific Module
 var current_page = document.querySelector('[data-page]').getAttribute('data-page');
 
+
+/***/ }),
+/* 7 */,
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Record = function () {
+  _createClass(Record, null, [{
+    key: "model",
+
+    // ================
+    // Class (static) Methods
+    value: function model() {
+      return this.name;
+    }
+  }, {
+    key: "all",
+    value: function all() {
+      var _this = this;
+
+      var records = {
+        "Budget": {
+          "1": {
+            name: "groceries",
+            amount: 123.34
+          },
+          "2": {
+            name: "beer",
+            amount: 212.34
+          },
+          "3": {
+            name: "cars",
+            amount: 9999.93
+          },
+          "4": {
+            name: "incusrance",
+            amount: 123.34
+          },
+          "5": {
+            name: "and",
+            amount: 123.34
+          }
+        }
+      };
+      var model_records = records[this.model()];
+      // TODO ^ Get those budgets from Firebase or other storage
+
+      var record_ids = Object.keys(model_records);
+      var all_objects = [];
+
+      record_ids.forEach(function (record_id) {
+        model_records[record_id].id = record_id;
+        all_objects.push(new _this(model_records[record_id]));
+      });
+
+      return all_objects;
+    }
+  }, {
+    key: "find",
+    value: function find(id) {}
+    // TODO find record by ID (on firebase?)
+
+
+    // ================
+    // Instance Methods
+
+  }]);
+
+  function Record(params) {
+    // ...
+
+    _classCallCheck(this, Record);
+  }
+
+  _createClass(Record, [{
+    key: "validate",
+    value: function validate() {
+      // ...
+    }
+  }, {
+    key: "save",
+    value: function save() {
+      // ...
+    }
+  }]);
+
+  return Record;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = Record;
 
 /***/ })
 /******/ ]);
