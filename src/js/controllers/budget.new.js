@@ -1,3 +1,4 @@
+import App from './app.controller';
 import Budget from '../models/budget';
 import BudgetNewView from '../views/budget.new.view';
 
@@ -12,7 +13,7 @@ class BudgetNew {
 
   // Constructor Methods
   renderTemplates(){
-    document.querySelector('#root').innerHTML = BudgetNewView.new(); 
+    document.querySelector('#root').innerHTML = BudgetNewView.new();
   };
 
   bindFunctions(){

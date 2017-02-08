@@ -1,6 +1,6 @@
+import App from './app.controller';
 import Budget from '../models/budget';
 import BudgetIndexView from '../views/budget.index.view';
-import BudgetNew from '../controllers/budget.new';
 
 class BudgetIndex {
   constructor(){
@@ -25,7 +25,7 @@ class BudgetIndex {
       });
     });
 
-    document.querySelector('#budget_add_spending').addEventListener("click", this.gotoBudgetNew);
+    document.querySelector('#budget_add_spending').addEventListener("click", e => App.go_to('BudgetNew'));
   };
 
   // Instance Methods
@@ -33,10 +33,6 @@ class BudgetIndex {
     // TODO use current route in URL to determine current Budget
     return false;
   };
-
-  gotoBudgetNew(){
-    new BudgetNew;
-  }
 
   // Template Methods
   renderCurrentBudget(){
