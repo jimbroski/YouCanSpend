@@ -22,6 +22,7 @@ class AppController {
   // Instance Methods
   go_to(route){
     this.current_route = new Routes[route];
+    componentHandler.upgradeAllRegistered();
     console.log(this.current_route); // TODO Kept for debugging
   }
 }

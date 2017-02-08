@@ -54,13 +54,16 @@ class Record {
     // ...
   };
 
-  validate(){
-    // ...
-  }
-
   save(){
-    // ...
-  }
+    if(this.validate()){
+      console.log('budget save');
+      // TODO Assign ID 
+
+      // TODO save this budget to firebase?
+    }else{
+      return "Input is invalid";
+    }
+  };
 
 }
 

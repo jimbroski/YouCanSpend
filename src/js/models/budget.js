@@ -16,12 +16,9 @@ class Budget extends Record {
     // TODO validate amount being a valid decimal and present
     // TODO validate name presence and length
     // TODO validate icon string is equal to any of the icons
+    return true;
   }
-
-  save(){
-    // TODO save this budget to firebase?
-  }
-
+  
 }
 
 export default Budget;
