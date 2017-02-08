@@ -1,4 +1,4 @@
-class AppWrapper {
+class AppController {
   constructor(){
     this.bindFunctions();
     this.startup();
@@ -15,4 +15,4 @@ class AppWrapper {
   }
 }
 
-export default new AppWrapper(); // Initialize on Startup
+export default new AppController(); // Initialize on Startup
