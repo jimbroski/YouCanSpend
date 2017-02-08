@@ -1,5 +1,6 @@
 import Budget from '../models/budget';
-import BudgetNew from '../controllers/budget.new.js';
+import BudgetIndexView from '../views/budget.index.view';
+import BudgetNew from '../controllers/budget.new';
 
 class BudgetIndex {
   constructor(){
@@ -13,7 +14,7 @@ class BudgetIndex {
 
   // Constructor Methods
   renderTemplates(){
-    document.querySelector('#root').innerHTML = this.renderAllBudgets();
+    document.querySelector('#root').innerHTML = BudgetIndexView.all(this.budgets);
   };
 
   bindFunctions(){
@@ -38,12 +39,8 @@ class BudgetIndex {
   }
 
   // Template Methods
-  renderAllBudgets(){
-    return this.budgets.map(budget => budget.templateListItem()).join('');
-  };
-
   renderCurrentBudget(){
-    document.querySelector('#amount_current').innerHTML = this.current_budget.templateCurrent();
+    document.querySelector('#amount_current').innerHTML = BudgetIndexView.current(this.current_budget);
   }
 };
 

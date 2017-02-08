@@ -1,4 +1,5 @@
 import Budget from '../models/budget';
+import BudgetNewView from '../views/budget.new.view';
 
 class BudgetNew {
   constructor(){
@@ -11,7 +12,7 @@ class BudgetNew {
 
   // Constructor Methods
   renderTemplates(){
-    document.querySelector('#root').innerHTML = "New Budget"; //this.budget.templateNewBudget()
+    document.querySelector('#root').innerHTML = BudgetNewView.new(); 
   };
 
   bindFunctions(){

@@ -18,7 +18,7 @@ class Transaction {
         <input class="mdl-textfield__input" type="text" id="budget_name_input">
         <label class="mdl-textfield__label" for="sample3">on...</label>
       </div>
-    </div><!-- /.mdl-list__item -->`
+    </div>`
   }
 }
 
