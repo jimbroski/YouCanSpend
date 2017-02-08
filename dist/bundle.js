@@ -131,23 +131,25 @@ var Index = function () {
     // Constructor Methods
     value: function renderTemplates() {
       document.querySelector('#root').innerHTML = this.renderAllBudgets();
-      // document.querySelectorAll('.budget_list_item').addEventListener("click", this.showCurrentBudget);
-      // Array.from(document.querySelectorAll('.budget_list_item')).forEach(e => e.addEventListener("click", this.showCurrentBudget));
     }
   }, {
     key: 'bindFunctions',
     value: function bindFunctions() {
+      var _this = this;
+
       this.budgets.forEach(function (budget) {
-        return budget.bindFunctions();
+        document.querySelector('#' + budget.item_selector).addEventListener("click", function (e) {
+          _this.current_budget = budget;
+          _this.renderCurrentBudget();
+        });
       });
-      // document.querySelector('.budget_list_item').addEventListener("click", this.showCurrentBudget);
       // document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
     }
   }, {
     key: 'getAllBudgets',
 
 
-    // Custom Methods
+    // Getter Methods
     value: function getAllBudgets() {
       // Get all Records
       var records = {
@@ -196,16 +198,6 @@ var Index = function () {
     key: 'renderAllBudgets',
 
 
-    // showCurrentBudget(e){
-    //   // console.log(e.target);
-    //   console.log(this);
-    //   // let currentBudget = new Budget({
-    //   //   amount: budget.amount,
-    //   //   name: budget.name
-    //   // });
-    //   // return currentBudget.templateListItem();
-    // }
-
     // submitBudget(){
     //   function getAndValidateAmount(){
     //     return document.querySelector('#Budget_amount').value;
@@ -223,11 +215,17 @@ var Index = function () {
     //   console.log(newBudget);
     // }
 
-    // Templates
+
+    // Template Methods
     value: function renderAllBudgets() {
       return this.budgets.map(function (budget) {
         return budget.templateListItem();
       }).join('');
+    }
+  }, {
+    key: 'renderCurrentBudget',
+    value: function renderCurrentBudget() {
+      document.querySelector('#amount_current').innerHTML = this.current_budget.templateCurrent();
     }
   }]);
 
@@ -284,18 +282,10 @@ var Budget = function () {
     this.name = params.name;
     this.icon = "shopping_basket"; // TODO adjustable
 
-    // this.bindFunctions();
+    this.item_selector = "budget_item_" + this.id;
   }
 
   _createClass(Budget, [{
-    key: "bindFunctions",
-    value: function bindFunctions() {
-      var self = this;
-      document.querySelector('#budget_item_' + this.id).addEventListener("click", function () {
-        alert("you clicked " + self.name);
-      });
-    }
-  }, {
     key: "templateNewBudget",
 
 
@@ -306,7 +296,7 @@ var Budget = function () {
   }, {
     key: "templateListItem",
     value: function templateListItem() {
-      return "\n    <div id=\"budget_item_" + this.id + "\" class=\"budget_list_item mdl-list__item mdl-list__item--two-line\">\n      <span class=\"mdl-list__item-primary-content\">\n        <i class=\"material-icons mdl-list__item-avatar\">" + this.icon + "</i>\n        <span>$" + this.amount + "</span>\n        <span class=\"mdl-list__item-sub-title\">on " + this.name + "</span>\n      </span>\n    </div>";
+      return "\n    <div id=\"" + this.item_selector + "\" class=\"budget_list_item mdl-list__item mdl-list__item--two-line\">\n      <span class=\"mdl-list__item-primary-content\">\n        <i class=\"material-icons mdl-list__item-avatar\">" + this.icon + "</i>\n        <span>$" + this.amount + "</span>\n        <span class=\"mdl-list__item-sub-title\">on " + this.name + "</span>\n      </span>\n    </div>";
     }
   }, {
     key: "templateCurrent",

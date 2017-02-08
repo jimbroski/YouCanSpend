@@ -13,17 +13,19 @@ class Index {
   // Constructor Methods
   renderTemplates(){
     document.querySelector('#root').innerHTML = this.renderAllBudgets();
-    // document.querySelectorAll('.budget_list_item').addEventListener("click", this.showCurrentBudget);
-    // Array.from(document.querySelectorAll('.budget_list_item')).forEach(e => e.addEventListener("click", this.showCurrentBudget));
   };
 
   bindFunctions(){
-    this.budgets.forEach(budget => budget.bindFunctions());
-    // document.querySelector('.budget_list_item').addEventListener("click", this.showCurrentBudget);
+    this.budgets.forEach(budget => {
+      document.querySelector('#' + budget.item_selector).addEventListener("click", e => {
+        this.current_budget = budget;
+        this.renderCurrentBudget();
+      });
+    });
     // document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
   };
 
-  // Custom Methods
+  // Getter Methods
   getAllBudgets(){
     // Get all Records
     let records = {
@@ -68,17 +70,6 @@ class Index {
     return false;
   };
 
-
-  // showCurrentBudget(e){
-  //   // console.log(e.target);
-  //   console.log(this);
-  //   // let currentBudget = new Budget({
-  //   //   amount: budget.amount,
-  //   //   name: budget.name
-  //   // });
-  //   // return currentBudget.templateListItem();
-  // }
-
   // submitBudget(){
   //   function getAndValidateAmount(){
   //     return document.querySelector('#Budget_amount').value;
@@ -96,10 +87,15 @@ class Index {
   //   console.log(newBudget);
   // }
 
-  // Templates
+
+  // Template Methods
   renderAllBudgets(){
     return this.budgets.map(budget => budget.templateListItem()).join('');
   };
+
+  renderCurrentBudget(){
+    document.querySelector('#amount_current').innerHTML = this.current_budget.templateCurrent();
+  }
 };
 
 export default new Index();

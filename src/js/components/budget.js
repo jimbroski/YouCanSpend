@@ -5,14 +5,7 @@ class Budget {
     this.name = params.name;
     this.icon = "shopping_basket"; // TODO adjustable
 
-    // this.bindFunctions();
-  }
-
-  bindFunctions(){
-    let self = this;
-    document.querySelector('#budget_item_' + this.id).addEventListener("click", function(){
-      alert("you clicked " + self.name);
-    });
+    this.item_selector = `budget_item_${this.id}`
   };
 
   // Templates
@@ -36,7 +29,7 @@ class Budget {
 
   templateListItem(){
     return `
-    <div id="budget_item_${this.id}" class="budget_list_item mdl-list__item mdl-list__item--two-line">
+    <div id="${this.item_selector}" class="budget_list_item mdl-list__item mdl-list__item--two-line">
       <span class="mdl-list__item-primary-content">
         <i class="material-icons mdl-list__item-avatar">${this.icon}</i>
         <span>$${this.amount}</span>
