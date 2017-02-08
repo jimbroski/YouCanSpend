@@ -3,7 +3,7 @@ import Budget from '../components/budget';
 class Index {
   constructor(){
     // Inizialize Variables
-    this.budgets = this.getAllBudgets();
+    this.budgets = Budget.all();
     this.current_budget = this.getCurrentBudget();
     // Inizialize Views
     this.renderTemplates();
@@ -22,49 +22,11 @@ class Index {
         this.renderCurrentBudget();
       });
     });
+
     // document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
   };
 
-  // Getter Methods
-  getAllBudgets(){
-    // Get all Records
-    let records = {
-      "1": {
-        name: "groceries",
-        amount: 123.34
-      },
-      "2": {
-        name: "beer",
-        amount: 212.34
-      },
-      "3": {
-        name: "cars",
-        amount: 9999.93
-      },
-      "4": {
-        name: "incusrance",
-        amount: 123.34
-      },
-      "5": {
-        name: "and",
-        amount: 123.34
-      }
-    };
-    // TODO ^ Get those budgets from Firebase or other storage
-    let record_ids = Object.keys(records);
-
-    // Initialize object for each record and add it to an array
-    let all_objects = [];
-
-    record_ids.forEach(record_id => {
-      records[record_id].id = record_id;
-      let new_budget = new Budget(records[record_id]);
-      all_objects.push(new_budget);
-    });
-
-    return all_objects;
-  };
-
+  // Instance Methods
   getCurrentBudget(){
     // TODO use current route in URL to determine current Budget
     return false;

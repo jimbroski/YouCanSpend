@@ -84,12 +84,12 @@ var Layout = function () {
   }
 
   _createClass(Layout, [{
-    key: 'bindFunctions',
+    key: "bindFunctions",
     value: function bindFunctions() {
-      $('body').on('click', this.startup);
+      // $('body').on('click', this.startup);
     }
   }, {
-    key: 'startup',
+    key: "startup",
     value: function startup() {
       console.log("Hello World");
     }
@@ -117,7 +117,7 @@ var Index = function () {
     _classCallCheck(this, Index);
 
     // Inizialize Variables
-    this.budgets = this.getAllBudgets();
+    this.budgets = __WEBPACK_IMPORTED_MODULE_0__components_budget__["a" /* default */].all();
     this.current_budget = this.getCurrentBudget();
     // Inizialize Views
     this.renderTemplates();
@@ -143,53 +143,14 @@ var Index = function () {
           _this.renderCurrentBudget();
         });
       });
+
       // document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
     }
   }, {
-    key: 'getAllBudgets',
-
-
-    // Getter Methods
-    value: function getAllBudgets() {
-      // Get all Records
-      var records = {
-        "1": {
-          name: "groceries",
-          amount: 123.34
-        },
-        "2": {
-          name: "beer",
-          amount: 212.34
-        },
-        "3": {
-          name: "cars",
-          amount: 9999.93
-        },
-        "4": {
-          name: "incusrance",
-          amount: 123.34
-        },
-        "5": {
-          name: "and",
-          amount: 123.34
-        }
-      };
-      // TODO ^ Get those budgets from Firebase or other storage
-      var record_ids = Object.keys(records);
-
-      // Initialize object for each record and add it to an array
-      var all_objects = [];
-
-      record_ids.forEach(function (record_id) {
-        records[record_id].id = record_id;
-        var new_budget = new __WEBPACK_IMPORTED_MODULE_0__components_budget__["a" /* default */](records[record_id]);
-        all_objects.push(new_budget);
-      });
-
-      return all_objects;
-    }
-  }, {
     key: 'getCurrentBudget',
+
+
+    // Instance Methods
     value: function getCurrentBudget() {
       // TODO use current route in URL to determine current Budget
       return false;
@@ -274,6 +235,57 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Budget = function () {
+  _createClass(Budget, null, [{
+    key: "all",
+
+    // Class (static) Methods
+    // TODO split these out into something liek ActiveRecord and extent Budget
+    value: function all() {
+      var records = {
+        "1": {
+          name: "groceries",
+          amount: 123.34
+        },
+        "2": {
+          name: "beer",
+          amount: 212.34
+        },
+        "3": {
+          name: "cars",
+          amount: 9999.93
+        },
+        "4": {
+          name: "incusrance",
+          amount: 123.34
+        },
+        "5": {
+          name: "and",
+          amount: 123.34
+        }
+      };
+      // TODO ^ Get those budgets from Firebase or other storage
+
+      var record_ids = Object.keys(records);
+      var all_objects = [];
+
+      record_ids.forEach(function (record_id) {
+        records[record_id].id = record_id;
+        var new_budget = new Budget(records[record_id]);
+        all_objects.push(new_budget);
+      });
+
+      return all_objects;
+    }
+  }, {
+    key: "find",
+    value: function find(id) {}
+    // TODO find record by ID (on firebase?)
+
+
+    // Instance Methods
+
+  }]);
+
   function Budget(params) {
     _classCallCheck(this, Budget);
 
@@ -286,10 +298,23 @@ var Budget = function () {
   }
 
   _createClass(Budget, [{
-    key: "templateNewBudget",
+    key: "validate",
+    value: function validate() {
+      // TODO validate id uniqueness and presence
+      // TODO validate amount being a valid decimal and present
+      // TODO validate name presence and length
+      // TODO validate icon string is equal to any of the icons
+    }
+  }, {
+    key: "save",
+    value: function save() {}
+    // TODO save this budget to firebase?
 
 
     // Templates
+
+  }, {
+    key: "templateNewBudget",
     value: function templateNewBudget() {
       return "\n    <div class=\"padding-30\">\n      <div class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\">\n        <input class=\"mdl-textfield__input\" type=\"text\" id=\"Budget_name\">\n        <label class=\"mdl-textfield__label\" for=\"Budget_name\">Budget Name</label>\n      </div>\n      <div class=\"mdl-textfield mdl-js-textfield mdl-textfield--floating-label\">\n        <input class=\"mdl-textfield__input\" type=\"text\" pattern=\"-?[0-9]*(.[0-9]+)?\" id=\"Budget_amount\">\n        <label class=\"mdl-textfield__label\" for=\"Budget_amount\">Budget Amount</label>\n        <span class=\"mdl-textfield__error\">Input is not a number!</span>\n      </div>\n      <button id=\"Budget_submit\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored\">\n        Save Budget\n      </button>\n    </div><!-- /.padding-30 -->";
     }

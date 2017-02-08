@@ -5,7 +5,7 @@ class Layout {
   }
 
   bindFunctions(){
-    $('body').on('click', this.startup);
+    // $('body').on('click', this.startup);
   }
 
   startup(){
