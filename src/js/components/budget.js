@@ -9,8 +9,9 @@ class Budget {
   }
 
   bindFunctions(){
-    document.querySelector('#budget_item_' + this.name).addEventListener("click", function(){
-      alert("you clicked " + this.name)
+    let self = this;
+    document.querySelector('#budget_item_' + this.id).addEventListener("click", function(){
+      alert("you clicked " + self.name);
     });
   };
 
@@ -35,7 +36,7 @@ class Budget {
 
   templateListItem(){
     return `
-    <div id="budget_item_${this.name}" class="budget_list_item mdl-list__item mdl-list__item--two-line">
+    <div id="budget_item_${this.id}" class="budget_list_item mdl-list__item mdl-list__item--two-line">
       <span class="mdl-list__item-primary-content">
         <i class="material-icons mdl-list__item-avatar">${this.icon}</i>
         <span>$${this.amount}</span>

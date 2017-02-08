@@ -12,13 +12,13 @@ class Index {
 
   // Constructor Methods
   renderTemplates(){
-    this.renderAllBudgets();
-    // document.querySelector('#root').innerHTML = this.templateList();
+    document.querySelector('#root').innerHTML = this.renderAllBudgets();
     // document.querySelectorAll('.budget_list_item').addEventListener("click", this.showCurrentBudget);
     // Array.from(document.querySelectorAll('.budget_list_item')).forEach(e => e.addEventListener("click", this.showCurrentBudget));
   };
 
   bindFunctions(){
+    this.budgets.forEach(budget => budget.bindFunctions());
     // document.querySelector('.budget_list_item').addEventListener("click", this.showCurrentBudget);
     // document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
   };
@@ -48,6 +48,7 @@ class Index {
         amount: 123.34
       }
     };
+    // TODO ^ Get those budgets from Firebase or other storage
     let record_ids = Object.keys(records);
 
     // Initialize object for each record and add it to an array
@@ -97,15 +98,7 @@ class Index {
 
   // Templates
   renderAllBudgets(){
-    console.log(this.budgets);
-    // let result = this.budgets.map(function(budget){
-    //   let newBudget = new Budget({
-    //     amount: budget.amount,
-    //     name: budget.name
-    //   });
-    //   return newBudget.templateListItem();
-    // });
-    // return result.join('');
+    return this.budgets.map(budget => budget.templateListItem()).join('');
   };
 };
 

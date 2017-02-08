@@ -125,24 +125,26 @@ var Index = function () {
   }
 
   _createClass(Index, [{
-    key: "renderTemplates",
+    key: 'renderTemplates',
 
 
     // Constructor Methods
     value: function renderTemplates() {
-      this.renderAllBudgets();
-      // document.querySelector('#root').innerHTML = this.templateList();
+      document.querySelector('#root').innerHTML = this.renderAllBudgets();
       // document.querySelectorAll('.budget_list_item').addEventListener("click", this.showCurrentBudget);
       // Array.from(document.querySelectorAll('.budget_list_item')).forEach(e => e.addEventListener("click", this.showCurrentBudget));
     }
   }, {
-    key: "bindFunctions",
+    key: 'bindFunctions',
     value: function bindFunctions() {
+      this.budgets.forEach(function (budget) {
+        return budget.bindFunctions();
+      });
       // document.querySelector('.budget_list_item').addEventListener("click", this.showCurrentBudget);
       // document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
     }
   }, {
-    key: "getAllBudgets",
+    key: 'getAllBudgets',
 
 
     // Custom Methods
@@ -170,6 +172,7 @@ var Index = function () {
           amount: 123.34
         }
       };
+      // TODO ^ Get those budgets from Firebase or other storage
       var record_ids = Object.keys(records);
 
       // Initialize object for each record and add it to an array
@@ -184,13 +187,13 @@ var Index = function () {
       return all_objects;
     }
   }, {
-    key: "getCurrentBudget",
+    key: 'getCurrentBudget',
     value: function getCurrentBudget() {
       // TODO use current route in URL to determine current Budget
       return false;
     }
   }, {
-    key: "renderAllBudgets",
+    key: 'renderAllBudgets',
 
 
     // showCurrentBudget(e){
@@ -222,15 +225,9 @@ var Index = function () {
 
     // Templates
     value: function renderAllBudgets() {
-      console.log(this.budgets);
-      // let result = this.budgets.map(function(budget){
-      //   let newBudget = new Budget({
-      //     amount: budget.amount,
-      //     name: budget.name
-      //   });
-      //   return newBudget.templateListItem();
-      // });
-      // return result.join('');
+      return this.budgets.map(function (budget) {
+        return budget.templateListItem();
+      }).join('');
     }
   }]);
 
@@ -293,8 +290,9 @@ var Budget = function () {
   _createClass(Budget, [{
     key: "bindFunctions",
     value: function bindFunctions() {
-      document.querySelector('#budget_item_' + this.name).addEventListener("click", function () {
-        alert("you clicked " + this.name);
+      var self = this;
+      document.querySelector('#budget_item_' + this.id).addEventListener("click", function () {
+        alert("you clicked " + self.name);
       });
     }
   }, {
@@ -308,7 +306,7 @@ var Budget = function () {
   }, {
     key: "templateListItem",
     value: function templateListItem() {
-      return "\n    <div id=\"budget_item_" + this.name + "\" class=\"budget_list_item mdl-list__item mdl-list__item--two-line\">\n      <span class=\"mdl-list__item-primary-content\">\n        <i class=\"material-icons mdl-list__item-avatar\">" + this.icon + "</i>\n        <span>$" + this.amount + "</span>\n        <span class=\"mdl-list__item-sub-title\">on " + this.name + "</span>\n      </span>\n    </div>";
+      return "\n    <div id=\"budget_item_" + this.id + "\" class=\"budget_list_item mdl-list__item mdl-list__item--two-line\">\n      <span class=\"mdl-list__item-primary-content\">\n        <i class=\"material-icons mdl-list__item-avatar\">" + this.icon + "</i>\n        <span>$" + this.amount + "</span>\n        <span class=\"mdl-list__item-sub-title\">on " + this.name + "</span>\n      </span>\n    </div>";
     }
   }, {
     key: "templateCurrent",
