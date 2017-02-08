@@ -17,14 +17,12 @@ class AppController {
     // TODO Listen to route changes?
   }
 
-  startup(){
-    console.log("Hello World");
-  }
+  startup(){ this.go_to('BudgetIndex'); }
 
   // Instance Methods
   go_to(route){
     this.current_route = new Routes[route];
-    console.log(this.current_route);
+    console.log(this.current_route); // TODO Kept for debugging
   }
 }
 

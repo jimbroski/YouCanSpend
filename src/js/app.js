@@ -4,6 +4,3 @@ import '../css/app.scss';
 
 // Routes
 import './controllers/app.controller.js';
-import BudgetIndex from './controllers/budget.index.js';
-
-let initRoot = new BudgetIndex;
