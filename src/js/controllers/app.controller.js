@@ -23,7 +23,6 @@ class AppController {
 
   // Instance Methods
   go_to(route){
-    this.current_node = null;
     this.current_route = new Routes[route];
     console.log(this.current_route);
   }
