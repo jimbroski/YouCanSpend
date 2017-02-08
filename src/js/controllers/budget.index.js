@@ -1,4 +1,5 @@
 import Budget from '../models/budget';
+import BudgetNew from '../controllers/budget.new.js';
 
 class BudgetIndex {
   constructor(){
@@ -23,7 +24,7 @@ class BudgetIndex {
       });
     });
 
-    // document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
+    document.querySelector('#budget_add_spending').addEventListener("click", this.gotoBudgetNew);
   };
 
   // Instance Methods
@@ -32,23 +33,9 @@ class BudgetIndex {
     return false;
   };
 
-  // submitBudget(){
-  //   function getAndValidateAmount(){
-  //     return document.querySelector('#Budget_amount').value;
-  //   };
-  //
-  //   function getAndValidateName(){
-  //     return  document.querySelector('#Budget_name').value;
-  //   }
-  //
-  //   let newBudget = new Budget({
-  //     amount: getAndValidateAmount(),
-  //     name: getAndValidateName()
-  //   });
-  //   document.querySelector('#root').innerHTML = newBudget.templateListItem();
-  //   console.log(newBudget);
-  // }
-
+  gotoBudgetNew(){
+    new BudgetNew;
+  }
 
   // Template Methods
   renderAllBudgets(){

@@ -6,5 +6,4 @@ import '../css/app.scss';
 import './controllers/app.wrapper.js';
 import BudgetIndex from './controllers/budget.index.js';
 
-
 let initRoot = new BudgetIndex;
