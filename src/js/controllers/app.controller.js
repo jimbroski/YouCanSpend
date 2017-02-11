@@ -17,7 +17,10 @@ class AppController {
     // TODO Listen to route changes?
   }
 
-  startup(){ this.go_to('BudgetIndex'); }
+  startup(){
+    // Go To Root
+    this.go_to('BudgetIndex');
+  };
 
   // Instance Methods
   go_to(route){

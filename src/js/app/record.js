@@ -1,3 +1,5 @@
+import Server from './server';
+
 class Record {
   // ================
   // Class (static) Methods
@@ -39,6 +41,7 @@ class Record {
   };
 
   static all(){
+    // Server.seedDemoContent(); // TODO: Remove Dev Method
     let model_records = this.records()[this.model()];
 
     let record_ids = Object.keys(model_records);
