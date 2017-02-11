@@ -22,6 +22,7 @@ class BudgetNew {
   submitBudget(){
     this.budget = new Budget({
       amount: document.querySelector('#Budget_amount').value,
+      balance: document.querySelector('#Budget_amount').value,
       name: document.querySelector('#Budget_name').value
     });
 

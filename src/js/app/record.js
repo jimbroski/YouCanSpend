@@ -3,35 +3,43 @@ class Record {
   // Class (static) Methods
   static model(){
     return this.name;
-  }
+  };
 
-  static all(){
-    let records = {
+  static records(){
+    // TODO Get those budgets from Firebase or other storage:
+    return {
       "Budget": {
         "1": {
           name: "groceries",
-          amount: 123.34
+          amount: 123.34,
+          balance: 44
         },
         "2": {
           name: "beer",
-          amount: 212.34
+          amount: 212.34,
+          balance: -23
         },
         "3": {
           name: "cars",
-          amount: 9999.93
+          amount: 9999.93,
+          balance: 3342
         },
         "4": {
           name: "incusrance",
-          amount: 123.34
+          amount: 123.34,
+          balance: 44.23
         },
         "5": {
           name: "and",
-          amount: 123.34
+          amount: 123.34,
+          balance: 123
         }
       }
     };
-    let model_records = records[this.model()];
-    // TODO ^ Get those budgets from Firebase or other storage
+  };
+
+  static all(){
+    let model_records = this.records()[this.model()];
 
     let record_ids = Object.keys(model_records);
     let all_objects = [];
@@ -46,7 +54,7 @@ class Record {
 
   static find(id){
     // TODO find record by ID (on firebase?)
-  }
+  };
 
   // ================
   // Instance Methods
@@ -57,7 +65,7 @@ class Record {
   save(){
     if(this.validate()){
       console.log('budget save');
-      // TODO Assign ID 
+      // TODO Assign ID
 
       // TODO save this budget to firebase?
     }else{

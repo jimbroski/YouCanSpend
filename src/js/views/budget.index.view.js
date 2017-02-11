@@ -15,7 +15,7 @@ class BudgetIndexView {
       <div id="${budget.item_selector}" class="budget_list_item mdl-list__item mdl-list__item--two-line">
         <span class="mdl-list__item-primary-content">
           <i class="material-icons mdl-list__item-avatar">${budget.icon}</i>
-          <span>$${budget.amount}</span>
+          <span>$${budget.balance}</span>
           <span class="mdl-list__item-sub-title">on ${budget.name}</span>
         </span>
       </div>`;
@@ -23,7 +23,7 @@ class BudgetIndexView {
 
   static current(budget){
     return `
-      <div class="amount text-center">$${budget.amount}</div>
+      <div class="amount text-center">$${budget.balance}</div>
       <div class="name text-center">on ${budget.name} <a class="" href="#"><i class="material-icons">edit</i></a></div>`;
   };
 

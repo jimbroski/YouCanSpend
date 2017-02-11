@@ -5,6 +5,7 @@ class Budget extends Record {
     super();
     this.id = params.id;
     this.amount = params.amount;
+    this.balance = params.balance;
     this.name = params.name;
     this.icon = "shopping_basket"; // TODO adjustable
 
@@ -18,7 +19,7 @@ class Budget extends Record {
     // TODO validate icon string is equal to any of the icons
     return true;
   }
-  
+
 }
 
 export default Budget;
