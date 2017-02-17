@@ -38,9 +38,7 @@ class Record {
   save(){
     if(this.validate()){
       console.log('budget save'); // TODO remove this dev mthod
-      Server.post(this.model(), this.params);
-      // TODO Assign ID
-      // TODO save this budget to firebase?
+      return Server.post(this.model(), this.params);
     }else{
       return "Input is invalid";
     }

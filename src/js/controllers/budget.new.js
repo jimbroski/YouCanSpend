@@ -32,7 +32,7 @@ class BudgetNew extends Controller{
       name: document.querySelector('#Budget_name').value
     });
 
-    this.budget.save();
+    this.budget.save().then(() => App.go_to("BudgetIndex")); // TODO add budget to URL to preload current_budget
   };
 
 }

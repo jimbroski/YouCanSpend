@@ -23,7 +23,7 @@ class Server {
 
   get(path){
     var self = this;
-    return new Promise(function(resolve, reject){
+    return new Promise((resolve, reject) => {
       self.db.child(path).once('value', snapshot => resolve(snapshot.val()));
     });
   };
