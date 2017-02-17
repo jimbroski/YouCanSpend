@@ -20,7 +20,12 @@ class Server {
     return 'random_user_id_123'
   };
 
-
+  get(path){
+    var self = this;
+    return new Promise(function(resolve, reject){
+      self.db.child(path).once('value', snapshot => resolve(snapshot.val()));
+    });
+  };
 
   // TODO Remove Dev Methods:
   seedDemoContent(){

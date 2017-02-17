@@ -1,13 +1,19 @@
+import Controller from '../app/controller';
 import App from './app.controller';
 import Budget from '../models/budget';
 import BudgetIndexView from '../views/budget.index.view';
 
-class BudgetIndex {
+class BudgetIndex extends Controller {
   constructor(){
-    // Inizialize Variables
-    this.budgets = Budget.all();
-    this.current_budget = this.getCurrentBudget();
-    // Inizialize Views
+    super();
+    this.initializeVariables({
+      budgets: Budget.all(),
+      current_budget: this.getCurrentBudget()
+    });
+  };
+
+  afterInit(){
+    // default framework function
     this.renderTemplates();
     this.bindFunctions();
   };
