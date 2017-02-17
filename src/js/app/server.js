@@ -11,6 +11,7 @@ class Server {
       messagingSenderId: "38042327733"
     });
 
+    // Set instance variables
     this.current_user = this.authorizeAndReturn();
     this.db = firebase.database().ref(this.current_user);
   };

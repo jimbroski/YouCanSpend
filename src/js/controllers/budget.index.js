@@ -13,7 +13,7 @@ class BudgetIndex extends Controller {
   };
 
   afterInit(){
-    // default framework function
+    // doc: default framework function
     this.renderTemplates();
     this.bindFunctions();
   };
