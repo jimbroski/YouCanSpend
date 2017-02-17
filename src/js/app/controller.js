@@ -1,4 +1,16 @@
 class Controller  {
+  // ================
+  // Class (static) Methods
+  static controller(){
+    return this.name;
+  };
+
+  // ================
+  // Instance Methods
+  constructor(params){
+    // ...
+  };
+
   initializeVariables(variables){
     // doc: resolve all given (model) promises
     return Promise.all(Object.values(variables)).then(values => {
