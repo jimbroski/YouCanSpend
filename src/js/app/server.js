@@ -30,7 +30,11 @@ class Server {
 
   post(path, params){
     return this.db.child(path).push(params);
-  }
+  };
+
+  patch(path, params){};
+
+  delete(path){};
 
   // TODO Remove Dev Methods:
   seedDemoContent(){

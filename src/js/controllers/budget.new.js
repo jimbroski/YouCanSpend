@@ -33,7 +33,7 @@ class BudgetNew extends Controller{
     });
 
     this.budget.save();
-  }
+  };
 
 }
 

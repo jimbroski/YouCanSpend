@@ -19,7 +19,7 @@ class Record {
       });
       return records;
     });
-  }
+  };
 
   static find(id){
     // TODO find record by ID (on firebase?)
@@ -33,7 +33,7 @@ class Record {
 
   model(){
     return this.constructor.name;
-  }
+  };
 
   save(){
     if(this.validate()){
@@ -45,6 +45,10 @@ class Record {
       return "Input is invalid";
     }
   };
+
+  update(){};
+
+  destroy(){};
 
 }
 
