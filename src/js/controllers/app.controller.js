@@ -19,7 +19,8 @@ class AppController {
 
   startup(){
     // Go To Root
-    this.go_to('BudgetIndex');
+    // this.go_to('BudgetIndex');
+    this.go_to('BudgetNew');
   };
 
   // Instance Methods

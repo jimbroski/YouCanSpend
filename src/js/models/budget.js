@@ -2,7 +2,7 @@ import Record from "../app/record.js";
 
 class Budget extends Record {
   constructor(params){
-    super();
+    super(params);
     this.id = params.id;
     this.amount = params.amount;
     this.balance = params.balance;

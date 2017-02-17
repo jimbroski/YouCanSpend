@@ -28,6 +28,10 @@ class Server {
     });
   };
 
+  post(path, params){
+    return this.db.child(path).push(params);
+  }
+
   // TODO Remove Dev Methods:
   seedDemoContent(){
     this.db.set({

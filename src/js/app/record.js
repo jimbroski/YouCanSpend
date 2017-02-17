@@ -11,9 +11,10 @@ class Record {
     // Server.seedDemoContent(); // TODO: Remove Dev Method
     // doc: Request data from the server/database for the given model
     return Server.get(this.model()).then(records => {
-      records = records.map(record => {
+      records = Object.keys(records).map(key => {
         // doc: Assign record ID and create an instance of the current model
-        record.id = records.indexOf(record);
+        let record = records[key];
+        record.id = key;
         return new this(record);
       });
       return records;
@@ -27,12 +28,17 @@ class Record {
   // ================
   // Instance Methods
   constructor(params){
-    // ...
+    this.params = params;
   };
+
+  model(){
+    return this.constructor.name;
+  }
 
   save(){
     if(this.validate()){
-      console.log('budget save');
+      console.log('budget save'); // TODO remove this dev mthod
+      Server.post(this.model(), this.params);
       // TODO Assign ID
       // TODO save this budget to firebase?
     }else{
