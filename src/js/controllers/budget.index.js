@@ -31,7 +31,7 @@ class BudgetIndex extends Controller {
       });
     });
 
-    document.querySelector('#budget_add_spending').addEventListener("click", e => App.go_to('BudgetNew'));
+    document.querySelector('#budget_new').addEventListener("click", e => App.go_to('BudgetNew'));
   };
 
   // Instance Methods

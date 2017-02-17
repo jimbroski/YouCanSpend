@@ -3,6 +3,13 @@ class BudgetIndexView {
     return `
       <div class="mdl-list page-content">
         ${budgets.map(budget => this.templateListItem(budget)).join('')}
+
+        <div id="budget_new" data-route="BudgetNew" class="budget_list_item mdl-list__item">
+          <span class="mdl-list__item-primary-content">
+            <i class="material-icons mdl-list__item-avatar">add</i>
+            <span>Add new Budget</span>
+          </span>
+        </div>
       </div>
 
       <button id="budget_add_spending" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">

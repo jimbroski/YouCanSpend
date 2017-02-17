@@ -1,10 +1,16 @@
+import Controller from '../app/controller';
 import App from './app.controller';
 import Budget from '../models/budget';
 import BudgetNewView from '../views/budget.new.view';
 
-class BudgetNew {
+class BudgetNew extends Controller{
   constructor(){
-    // Inizialize Views
+    super();
+    this.initializeVariables({});
+  };
+
+  afterInit(){
+    // doc: default framework function
     this.renderTemplates();
     this.bindFunctions();
   };
