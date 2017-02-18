@@ -1,12 +1,14 @@
 import Controller from '../app/controller';
 import App from './app.controller';
 import Budget from '../models/budget';
-import BudgetNewView from '../views/budget.new.view';
+import BudgetEditView from '../views/budget.edit.view';
 
-class BudgetNew extends Controller{
-  constructor(){
+class BudgetEdit extends Controller{
+  constructor(id){
     super();
-    this.initializeVariables({});
+    this.initializeVariables({
+      budget: Budget.find(id)
+    });
   };
 
   afterInit(){
@@ -17,27 +19,25 @@ class BudgetNew extends Controller{
 
   // Constructor Methods
   renderTemplates(){
-    document.querySelector('#root').innerHTML = BudgetNewView.new();
+    document.querySelector('#root').innerHTML = BudgetEditView.edit(this.budget);
+    componentHandler.upgradeAllRegistered(); // TODO reorganize template loading, binding and registration
   };
 
   bindFunctions(){
-    document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
-    componentHandler.upgradeAllRegistered(); // TODO reorganize template loading, binding and registration
+    document.querySelector('#Budget_submit').addEventListener("click", e => this.submitBudget());
   };
 
   // Instance Methods
   submitBudget(){
-    this.budget = new Budget({
+    this.budget.params = {
       amount: document.querySelector('#Budget_amount').value,
-      balance: document.querySelector('#Budget_amount').value,
       name: document.querySelector('#Budget_name').value
-    });
+    }
 
-    this.budget.save()
+    this.budget.update()
       .then(() => App.go_to("BudgetIndex") /* TODO add budget to URL to preload current_budget*/)
       .catch(() => {});
   };
 
 }
-
-export default BudgetNew;
+export default BudgetEdit;

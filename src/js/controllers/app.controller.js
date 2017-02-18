@@ -20,14 +20,13 @@ class AppController {
   startup(){
     // Go To Root
     // this.go_to('BudgetIndex');
-    this.go_to('BudgetNew');
+    this.go_to('BudgetEdit', 3); // TODO Replace with correct root route
   };
 
   // Instance Methods
-  go_to(route){
-    this.current_route = new Routes[route];
+  go_to(route, params = false){
+    this.current_route = params ? new Routes[route](params) : new Routes[route];
     componentHandler.upgradeAllRegistered();
-    console.log(this.current_route); // TODO Kept for debugging
   }
 }
 

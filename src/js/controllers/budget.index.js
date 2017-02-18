@@ -32,6 +32,7 @@ class BudgetIndex extends Controller {
     });
 
     document.querySelector('#budget_new').addEventListener("click", e => App.go_to('BudgetNew'));
+    componentHandler.upgradeAllRegistered(); // TODO reorganize template loading, binding and registration
   };
 
   // Instance Methods
@@ -43,6 +44,7 @@ class BudgetIndex extends Controller {
   // Template Methods
   renderCurrentBudget(){
     document.querySelector('#amount_current').innerHTML = BudgetIndexView.current(this.current_budget);
+    document.querySelector('#budget_edit').addEventListener("click", e => App.go_to('BudgetEdit', this.current_budget.id));
   }
 };
 

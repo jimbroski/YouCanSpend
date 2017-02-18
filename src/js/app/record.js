@@ -25,7 +25,10 @@ class Record {
   };
 
   static find(id){
-    // TODO find record by ID (on firebase?)
+    return Server.get(`${this.model()}/${id}`).then(record => {
+      record.id = id;
+      return new this(record);
+    });
   };
 
   // ================
@@ -41,28 +44,37 @@ class Record {
 
   // === CRUD
   save(){
-    console.log(this.beforeSave());
-    if(!this.beforeSave().some(e => e == false)){
-      console.log('budget save'); // TODO remove this dev mthod
-      return Server.post(this.model(), this.params);
-    }else{
-      // doc: return indexes of failed validations
-      var indexes = [];
-      this.beforeSave().forEach((bfFunction, i) => !bfFunction && indexes.push(i));
-
-      let error_message = "At least one BeforeSave function failed on positions: " + indexes;
-      
-      return Promise.reject(new Logger('error', error_message));
-    }
+    return this.validateBeforeSave().then(() => {
+      Server.post(this.model(), this.params)
+    }).catch(() => Promise.reject());
   };
 
-  update(){};
+  update(){
+    return this.validateBeforeSave().then(() => {
+      Server.patch(`${this.model()}/${this.id}`, this.params)
+    }).catch(() => Promise.reject());
+  };
 
   destroy(){};
 
   // === Validations
+  validateBeforeSave(){
+    var self = this;
+    return new Promise((resolve, reject) => {
+      if(!self.beforeSave().some(e => e == false)){
+        resolve();
+      }else{
+        // doc: return indexes of failed validations
+        var indexes = [];
+        self.beforeSave().forEach((bfFunction, i) => !bfFunction && indexes.push(i));
+        let error_message = "At least one BeforeSave function failed on positions: " + indexes;
+        reject(new Logger('error', error_message));
+      }
+    });
+  };
+
   validates_presence(fields){
-    return fields.every((element) => (element != "undefinded") && (element != null) && (element.length > 0));
+    return fields.every((element) => (element != "undefinded") && (element != null) && (element.toString().length > 0));
   };
   validates_numerical(fields){
     return fields.every((element) => !isNaN(element));

@@ -32,7 +32,9 @@ class Server {
     return this.db.child(path).push(params);
   };
 
-  patch(path, params){};
+  patch(path, params){
+    return this.db.child(path).update(params);
+  };
 
   delete(path){};
 
