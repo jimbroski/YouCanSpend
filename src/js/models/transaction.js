@@ -1,24 +1,24 @@
-class Transaction {
+import Record from "../app/record.js";
+
+class Transaction extends Record {
   constructor(params){
+    super(params);
+    this.id = params.id;
     this.amount = params.amount;
     this.name = params.name;
+    this.budget_id = params.budget_id;
   }
 
-  // Templates
-  templateNewTransaction(){
-    return `
-    <div class="mdl-list__item">
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="budget_amount_input">
-        <label class="mdl-textfield__label" for="sample4">You Spent...</label>
-        <span class="mdl-textfield__error">Input is not a number!</span>
-      </div>
-
-      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="budget_name_input">
-        <label class="mdl-textfield__label" for="sample3">on...</label>
-      </div>
-    </div>`
+  beforeSave(){
+    // doc: framework methods run before save()
+    return [
+      this.validates_presence([this.amount, this.name, this.budget_id]),
+      this.validates_numerical([this.amount]),
+      this.validates_string([this.name]),
+      this.validates_max_length_of(10, [this.name])
+      // TODO validates_association_presence([this.budget_id])
+      // TODO this.updateBudgetBalance
+    ];
   }
 }
 

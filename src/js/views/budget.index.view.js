@@ -12,9 +12,7 @@ class BudgetIndexView {
         </div>
       </div>
 
-      <button id="budget_add_spending" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-        <i class="material-icons">add</i>
-      </button>`;
+      <div id="add_new_fab"></div>`;
   };
 
   static templateListItem(budget){
@@ -33,6 +31,13 @@ class BudgetIndexView {
       <div class="amount text-center">$${budget.balance}</div>
       <div class="name text-center">on ${budget.name} <i id="budget_edit" class="material-icons">edit</i></div>`;
   };
+
+  static add_new_fab(){
+    return `
+      <button id="transaction_new" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+        <i class="material-icons">add</i>
+      </button>`;
+  }
 
 };
 

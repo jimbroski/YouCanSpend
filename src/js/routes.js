@@ -1,5 +1,6 @@
 import BudgetIndex from './controllers/budget.index';
 import BudgetNew from './controllers/budget.new';
 import BudgetEdit from './controllers/budget.edit';
+import TransactionNew from './controllers/transaction.new';
 
-export default {BudgetIndex, BudgetNew, BudgetEdit};
+export default {BudgetIndex, BudgetNew, BudgetEdit, TransactionNew};
