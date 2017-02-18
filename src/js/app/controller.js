@@ -27,5 +27,17 @@ class Controller  {
       (typeof self.afterInit == 'function') && self.afterInit();
     });
   };
+
+  // Helper Methods
+  getUrlParams(params) {
+    var paramStrings = window.location.search.substring(1).split('&');
+    for(let paramString of paramStrings){
+      var paramArray = paramString.split('=');
+      if(paramArray[0] == params){
+        return paramArray[1] == 'undefined' ? true : paramArray[1];
+      }
+    };
+  };
+
 };
 export default Controller;

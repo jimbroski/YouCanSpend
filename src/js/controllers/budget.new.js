@@ -6,6 +6,7 @@ import BudgetNewView from '../views/budget.new.view';
 class BudgetNew extends Controller{
   constructor(){
     super();
+    this.hideCurrentBudget();
     this.initializeVariables({});
   };
 
@@ -22,7 +23,7 @@ class BudgetNew extends Controller{
 
   bindFunctions(){
     document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
-    componentHandler.upgradeAllRegistered(); 
+    componentHandler.upgradeAllRegistered();
   };
 
   // Instance Methods
@@ -36,6 +37,10 @@ class BudgetNew extends Controller{
     this.budget.save()
       .then(() => App.go_to("BudgetIndex") /* TODO add budget to URL to preload current_budget*/)
       .catch(() => {});
+  };
+
+  hideCurrentBudget(){
+    document.querySelector('#amount_current').innerHTML = '';
   };
 
 }
