@@ -12,14 +12,21 @@ class Budget extends Record {
     this.item_selector = `budget_item_${this.id}`
   };
 
-  validate(){
-    // TODO validate id uniqueness and presence
-    // TODO validate amount being a valid decimal and present
-    // TODO validate name presence and length
-    // TODO validate icon string is equal to any of the icons
-    return true;
+  beforeSave(){
+    // doc: framework methods run before save()
+    return [
+      this.validates_presence([this.amount, this.balance, this.name]),
+      this.validates_numerical([this.amount, this.balance]),
+      this.validates_string([this.name]),
+      this.validates_max_length_of(10, [this.name]),
+      this.validates([() => (Budget.list_of_icons().indexOf(this.icon) > -1)])
+    ];
   }
 
+  // Class Methods
+  static list_of_icons(){
+    return ['shopping_basket'];
+  }
 }
 
 export default Budget;
