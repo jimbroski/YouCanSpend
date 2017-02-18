@@ -10,10 +10,12 @@ class AppController {
 
   // Constructor Functions
   bindFunctions(){
-    document.querySelectorAll('[data-route]').forEach(a => a.addEventListener("click", e => {
-      this.go_to(a.getAttribute('data-route'));
-    }));
-
+    var all_links = document.querySelectorAll('[data-route]');
+    if (all_links != undefined && all_links.length > 0){
+      all_links.forEach(a => a.addEventListener("click", e => {
+        this.go_to(a.getAttribute('data-route'));
+      }));
+    }
     // TODO Listen to route changes?
   }
 

@@ -96,12 +96,14 @@ var AppController = function () {
     value: function bindFunctions() {
       var _this = this;
 
-      document.querySelectorAll('[data-route]').forEach(function (a) {
-        return a.addEventListener("click", function (e) {
-          _this.go_to(a.getAttribute('data-route'));
+      var all_links = document.querySelectorAll('[data-route]');
+      if (all_links != undefined && all_links.length > 0) {
+        all_links.forEach(function (a) {
+          return a.addEventListener("click", function (e) {
+            _this.go_to(a.getAttribute('data-route'));
+          });
         });
-      });
-
+      }
       // TODO Listen to route changes?
     }
   }, {
