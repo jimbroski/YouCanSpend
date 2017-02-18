@@ -14,6 +14,13 @@ class BudgetEditView {
       <button id="Budget_submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
         Save Budget
       </button>
+      <br><br>
+      <hr>
+      <div class="text-center">
+        <button id="Budget_destroy" class="mdl-button mdl-js-button mdl-button--accent">
+          Delete Budget
+        </button>
+      </div>
     </div>`;
   };
 };

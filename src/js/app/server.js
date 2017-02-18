@@ -36,7 +36,9 @@ class Server {
     return this.db.child(path).update(params);
   };
 
-  delete(path){};
+  delete(path){
+    return this.db.child(path).remove();
+  };
 
   // TODO Remove Dev Methods:
   seedDemoContent(){

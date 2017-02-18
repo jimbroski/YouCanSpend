@@ -57,7 +57,9 @@ class Record {
     }).catch(() => Promise.reject());
   };
 
-  destroy(){};
+  destroy(){
+    return Server.delete(`${this.model()}/${this.id}`);
+  };
 
   // === Validations
   validateBeforeSave(){

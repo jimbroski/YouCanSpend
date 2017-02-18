@@ -19,8 +19,7 @@ class AppController {
 
   startup(){
     // Go To Root
-    // this.go_to('BudgetIndex');
-    this.go_to('BudgetEdit', 3); // TODO Replace with correct root route
+    this.go_to('BudgetIndex');
   };
 
   // Instance Methods
