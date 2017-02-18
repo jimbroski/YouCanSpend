@@ -25,6 +25,7 @@ class AppController {
   // Instance Methods
   go_to(route, params = false){
     this.current_route = params ? new Routes[route](params) : new Routes[route];
+    window.location.hash = `/${this.current_route.controller()}`;
     componentHandler.upgradeAllRegistered();
   }
 }

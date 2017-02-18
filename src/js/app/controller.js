@@ -11,6 +11,10 @@ class Controller  {
     // ...
   };
 
+  controller(){
+    return this.constructor.name;
+  }
+
   initializeVariables(variables){
     // doc: resolve all given (model) promises
     return Promise.all(Object.values(variables)).then(values => {

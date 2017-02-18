@@ -32,7 +32,7 @@ class BudgetIndex extends Controller {
     });
 
     document.querySelector('#budget_new').addEventListener("click", e => App.go_to('BudgetNew'));
-    componentHandler.upgradeAllRegistered(); // TODO reorganize template loading, binding and registration
+    componentHandler.upgradeAllRegistered();
   };
 
   // Instance Methods

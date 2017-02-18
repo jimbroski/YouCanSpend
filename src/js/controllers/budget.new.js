@@ -22,7 +22,7 @@ class BudgetNew extends Controller{
 
   bindFunctions(){
     document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
-    componentHandler.upgradeAllRegistered(); // TODO reorganize template loading, binding and registration
+    componentHandler.upgradeAllRegistered(); 
   };
 
   // Instance Methods

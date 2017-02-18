@@ -21,7 +21,7 @@ class BudgetEdit extends Controller{
   // Constructor Methods
   renderTemplates(){
     document.querySelector('#root').innerHTML = BudgetEditView.edit(this.budget);
-    componentHandler.upgradeAllRegistered(); // TODO reorganize template loading, binding and registration
+    componentHandler.upgradeAllRegistered();
   };
 
   bindFunctions(){
