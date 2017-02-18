@@ -1,4 +1,5 @@
 import Record from "../app/record.js";
+import Budget from '../models/budget';
 
 class Transaction extends Record {
   constructor(params){
@@ -7,7 +8,7 @@ class Transaction extends Record {
     this.amount = params.amount;
     this.name = params.name;
     this.budget_id = params.budget_id;
-  }
+  };
 
   beforeSave(){
     // doc: framework methods run before save()
@@ -15,11 +16,18 @@ class Transaction extends Record {
       this.validates_presence([this.amount, this.name, this.budget_id]),
       this.validates_numerical([this.amount]),
       this.validates_string([this.name]),
-      this.validates_max_length_of(10, [this.name])
+      this.validates_max_length_of(10, [this.name]),
+      this.updateBudgetBalance()
       // TODO validates_association_presence([this.budget_id])
-      // TODO this.updateBudgetBalance
     ];
-  }
+  };
+
+  updateBudgetBalance(){
+    Budget.find(this.budget_id).then(budget => {
+      budget.params = {balance: (budget.balance - this.amount)};
+      budget.update();
+    })
+  };
 }
 
 export default Transaction;

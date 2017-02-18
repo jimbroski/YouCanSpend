@@ -37,8 +37,7 @@ class TransactionNew extends Controller{
     });
     this.transaction.save()
       .then(() => {
-        // TODO update current_budget
-        // App.go_to("BudgetIndex") /* TODO add budget to URL to preload current_budget*/
+        App.go_to("BudgetIndex") /* TODO add budget to URL to preload current_budget*/
       })
       .catch(() => {});
   };
