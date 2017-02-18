@@ -18,7 +18,7 @@ class Budget extends Record {
       this.validates_presence([this.amount, this.balance, this.name]),
       this.validates_numerical([this.amount, this.balance]),
       this.validates_string([this.name]),
-      this.validates_max_length_of(10, [this.name]),
+      this.validates_max_length_of(20, [this.name]),
       this.validates([() => (Budget.list_of_icons().indexOf(this.icon) > -1)])
       // this.recalculate_balance
       // this.convert amount to decimal float
