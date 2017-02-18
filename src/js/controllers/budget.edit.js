@@ -1,4 +1,5 @@
 import Controller from '../app/controller';
+import Logger from '../app/logger';
 import App from './app.controller';
 import Budget from '../models/budget';
 import BudgetEditView from '../views/budget.edit.view';
