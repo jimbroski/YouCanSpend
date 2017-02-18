@@ -8,6 +8,7 @@ class Logger {
 
   logErrors(){
     (this.type == 'error') && console.log(this.message);
+    Rollbar.error(this.message);
   };
 };
 export default Logger;

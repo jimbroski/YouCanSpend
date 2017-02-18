@@ -334,16 +334,23 @@ var Budget = function (_Record) {
       // doc: framework methods run before save()
       return [this.validates_presence([this.amount, this.balance, this.name]), this.validates_numerical([this.amount, this.balance]), this.validates_string([this.name]), this.validates_max_length_of(20, [this.name]), this.validates([function () {
         return Budget.list_of_icons().indexOf(_this2.icon) > -1;
-      }])
-      // this.recalculate_balance
+      }]), this.recalculate_balance()
       // this.convert amount to decimal float
       ];
     }
-
-    // Class Methods
-
+  }, {
+    key: "recalculate_balance",
+    value: function recalculate_balance() {
+      if (this.previous_state != undefined) {
+        this.params.balance = this.balance - (this.previous_state.amount - this.amount);
+      };
+      return true;
+    }
   }], [{
     key: "list_of_icons",
+
+
+    // Class Methods
     value: function list_of_icons() {
       return ['shopping_basket'];
     }
@@ -377,6 +384,7 @@ var Logger = function () {
     key: 'logErrors',
     value: function logErrors() {
       this.type == 'error' && console.log(this.message);
+      Rollbar.error(this.message);
     }
   }]);
 
@@ -421,6 +429,7 @@ var Record = function () {
       // Server.seedDemoContent(); // TODO: Remove Dev Method
       // doc: Request data from the server/database for the given model
       return __WEBPACK_IMPORTED_MODULE_0__server__["a" /* default */].get(this.model()).then(function (records) {
+        _this.previous_values = _this;
         records = Object.keys(records).map(function (key) {
           // doc: Assign record ID and create an instance of the current model
           var record = records[key];
@@ -449,6 +458,7 @@ var Record = function () {
     _classCallCheck(this, Record);
 
     this.params = params;
+    this.previous_state = {};
   }
 
   _createClass(Record, [{
@@ -476,6 +486,7 @@ var Record = function () {
       var _this4 = this;
 
       // doc: apply params to budget in order to validate it
+      Object.assign(this.previous_state, this);
       Object.assign(this, this.params);
       return this.validateBeforeSave().then(function () {
         __WEBPACK_IMPORTED_MODULE_0__server__["a" /* default */].patch(_this4.model() + '/' + _this4.id, _this4.params);

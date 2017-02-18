@@ -14,6 +14,7 @@ class Record {
     // Server.seedDemoContent(); // TODO: Remove Dev Method
     // doc: Request data from the server/database for the given model
     return Server.get(this.model()).then(records => {
+      this.previous_values = this;
       records = Object.keys(records).map(key => {
         // doc: Assign record ID and create an instance of the current model
         let record = records[key];
@@ -36,6 +37,7 @@ class Record {
   // ================
   constructor(params){
     this.params = params;
+    this.previous_state = {};
   };
 
   model(){
@@ -51,6 +53,7 @@ class Record {
 
   update(){
     // doc: apply params to budget in order to validate it
+    Object.assign(this.previous_state, this);
     Object.assign(this, this.params);
     return this.validateBeforeSave().then(() => {
       Server.patch(`${this.model()}/${this.id}`, this.params)
