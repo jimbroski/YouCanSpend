@@ -10,7 +10,7 @@ class AppController {
 
   // Constructor Functions
   bindFunctions(){
-    document.querySelectorAll('[data-route]').forEach(a => a.addEventListener("click", e => {
+    Array.from(document.querySelectorAll('[data-route]')).forEach(a => a.addEventListener("click", e => {
       this.go_to(a.getAttribute('data-route'));
     }));
 

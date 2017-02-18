@@ -96,7 +96,7 @@ var AppController = function () {
     value: function bindFunctions() {
       var _this = this;
 
-      document.querySelectorAll('[data-route]').forEach(function (a) {
+      Array.from(document.querySelectorAll('[data-route]')).forEach(function (a) {
         return a.addEventListener("click", function (e) {
           _this.go_to(a.getAttribute('data-route'));
         });
