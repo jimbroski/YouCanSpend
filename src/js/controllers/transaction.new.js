@@ -24,21 +24,23 @@ class TransactionNew extends Controller{
   };
 
   bindFunctions(){
-    // document.querySelector('#Budget_submit').addEventListener("click", this.submitBudget);
+    document.querySelector('#Transaction_submit').addEventListener("click", e => this.submitTransaction());
     componentHandler.upgradeAllRegistered();
   };
 
   // Instance Methods
   submitTransaction(){
-    // this.budget = new Budget({
-    //   amount: document.querySelector('#Budget_amount').value,
-    //   balance: document.querySelector('#Budget_amount').value,
-    //   name: document.querySelector('#Budget_name').value
-    // });
-    //
-    // this.budget.save()
-    //   .then(() => App.go_to("BudgetIndex") /* TODO add budget to URL to preload current_budget*/)
-    //   .catch(() => {});
+    this.transaction = new Transaction({
+      amount: document.querySelector('#transaction_amount_input').value,
+      name: document.querySelector('#transaction_name_input').value,
+      budget_id: this.budget_id
+    });
+    this.transaction.save()
+      .then(() => {
+        // TODO update current_budget
+        // App.go_to("BudgetIndex") /* TODO add budget to URL to preload current_budget*/
+      })
+      .catch(() => {});
   };
 
 }
