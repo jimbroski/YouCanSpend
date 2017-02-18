@@ -50,6 +50,8 @@ class Record {
   };
 
   update(){
+    // doc: apply params to budget in order to validate it
+    Object.assign(this, this.params);
     return this.validateBeforeSave().then(() => {
       Server.patch(`${this.model()}/${this.id}`, this.params)
     }).catch(() => Promise.reject());
