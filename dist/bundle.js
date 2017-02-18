@@ -384,6 +384,7 @@ var Logger = function () {
     key: 'logErrors',
     value: function logErrors() {
       this.type == 'error' && console.log(this.message);
+      Rollbar.error(this.message);
     }
   }]);
 
