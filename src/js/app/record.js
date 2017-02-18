@@ -1,4 +1,5 @@
 import Server from './server';
+import Logger from './logger';
 
 class Record {
   // ================
@@ -50,8 +51,8 @@ class Record {
       this.beforeSave().forEach((bfFunction, i) => !bfFunction && indexes.push(i));
 
       let error_message = "At least one BeforeSave function failed on positions: " + indexes;
-      console.log(error_message);
-      return error_message;
+      
+      return Promise.reject(new Logger('error', error_message));
     }
   };
 
