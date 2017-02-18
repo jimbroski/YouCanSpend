@@ -235,7 +235,9 @@ var Controller = function () {
       var _this = this;
 
       // doc: resolve all given (model) promises
-      return Promise.all(Object.values(variables)).then(function (values) {
+      return Promise.all(Object.keys(variables).map(function (key) {
+        return variables[key];
+      })).then(function (values) {
         var self = _this;
         // doc: assign all promise results to the given variables for the controller instance
         Object.keys(variables).forEach(function (key, i) {

@@ -17,7 +17,7 @@ class Controller  {
 
   initializeVariables(variables){
     // doc: resolve all given (model) promises
-    return Promise.all(Object.values(variables)).then(values => {
+    return Promise.all(Object.keys(variables).map(key => variables[key])).then(values => {
       var self = this;
       // doc: assign all promise results to the given variables for the controller instance
       Object.keys(variables).forEach(function(key, i) {
