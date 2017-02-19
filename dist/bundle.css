@@ -5955,9 +5955,10 @@ main {
   #amount_current .amount {
     padding: 46px 10px 20px;
     font-size: 3em; }
-    #amount_current .amount i {
+    #amount_current .amount button {
       color: #aaa;
-      margin-left: -34px; }
+      margin-left: -34px;
+      margin-right: -14px; }
   #amount_current .name {
     font-size: 1.1em;
     padding-bottom: 20px; }

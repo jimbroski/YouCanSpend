@@ -30,7 +30,12 @@ class BudgetIndexView {
 
   static current(budget){
     return `
-      <div class="amount text-center"><i class="material-icons">receipt</i> $${budget.balance}</div>
+      <div class="amount text-center">
+        <button class="mdl-button mdl-js-button mdl-button--icon">
+          <i class="material-icons">receipt</i>
+        </button>
+        &nbsp;$${budget.balance}
+      </div>
       <div class="name text-center">on <strong>${budget.name}</strong> in ${TimeChecker.daysInMonthLeft()} days. <i id="budget_edit" class="material-icons">edit</i></div>`;
   };
 
