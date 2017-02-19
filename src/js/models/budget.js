@@ -43,8 +43,8 @@ class Budget extends Record {
   };
 
   convertToDecimal(){
-    this.params.amount = Number(this.amount).toFixed(2);
-    this.params.balance = Number(this.balance).toFixed(2);
+    this.params.amount = (Number(this.amount).toFixed(2))/1;
+    this.params.balance = (Number(this.balance).toFixed(2))/1;
     return true;
   };
 
