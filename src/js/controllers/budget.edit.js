@@ -43,11 +43,16 @@ class BudgetEdit extends Controller{
 
   destroyBudget(){
     if(confirm("Are you sure you want to delete this budget? (This can't be undone!)")){
-      this.budget.destroy()
-        .then(() => App.go_to("BudgetIndex") /* TODO add budget to URL to preload current_budget*/)
-        .catch(() => new Logger('error', `Could not delete budget ${this.budget.id}`));
+      this.budget.destroy().then(e => {
+        this.resetCurrentBudget();
+        App.go_to("BudgetIndex");
+      }).catch(e => new Logger('error', `Could not delete budget ${this.budget.id}`));
     }
   };
 
-}
+  resetCurrentBudget(){
+    document.querySelector('#amount_current').innerHTML = '';
+  };
+
+};
 export default BudgetEdit;
