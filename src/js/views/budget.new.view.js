@@ -3,7 +3,7 @@ class BudgetNewView {
     return `
     <div class="padding-30">
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="Budget_name">
+        <input class="mdl-textfield__input" type="text" maxlength="25" id="Budget_name">
         <label class="mdl-textfield__label" for="Budget_name">Budget Name</label>
       </div>
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

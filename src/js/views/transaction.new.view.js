@@ -9,7 +9,7 @@ class TransactionNewView {
       </div>
 
       <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-        <input class="mdl-textfield__input" type="text" id="transaction_name_input">
+        <input class="mdl-textfield__input" type="text" maxlength="25" id="transaction_name_input">
         <label class="mdl-textfield__label" for="sample3">on...</label>
       </div>
     </div>

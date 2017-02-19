@@ -20,7 +20,7 @@ class Budget extends Record {
       this.validates_presence([this.amount, this.balance, this.name]),
       this.validates_numerical([this.amount, this.balance]),
       this.validates_string([this.name]),
-      this.validates_max_length_of(20, [this.name]),
+      this.validates_max_length_of(25, [this.name]),
       this.validates([() => (Budget.list_of_icons().indexOf(this.icon) > -1)]),
       this.convertToDecimal()
     ];
@@ -31,7 +31,7 @@ class Budget extends Record {
     return [
       this.recalculate_balance()
     ]
-  }
+  };
 
   // Custom Methods
 

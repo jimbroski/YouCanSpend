@@ -28,7 +28,7 @@ class BudgetIndexView {
 
   static current(budget){
     return `
-      <div class="amount text-center">$${budget.balance}</div>
+      <div class="amount text-center"><i class="material-icons">receipt</i> $${budget.balance}</div>
       <div class="name text-center">on ${budget.name} <i id="budget_edit" class="material-icons">edit</i></div>`;
   };
 

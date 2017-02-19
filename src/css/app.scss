@@ -32,6 +32,10 @@ main {
   .amount {
     padding: 46px 10px 20px;
     font-size: 3em;
+    i {
+      color: #aaa;
+      margin-left: -34px;
+    }
   }
   .name {
     font-size: 1.1em;
