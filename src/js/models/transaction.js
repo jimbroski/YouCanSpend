@@ -10,7 +10,7 @@ class Transaction extends Record {
     this.budget_id = params.budget_id;
   };
 
-  beforeSave(){
+  beforeCommit(){
     // doc: framework methods run before save()
     return [
       this.validates_presence([this.amount, this.name, this.budget_id]),

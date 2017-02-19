@@ -46,7 +46,7 @@ class Record {
 
   // === CRUD
   save(){
-    return this.validateBeforeSave().then(() => {
+    return this.validateBeforeCommit().then(() => {
       Server.post(this.model(), this.params)
     }).catch(() => Promise.reject());
   };
@@ -55,7 +55,8 @@ class Record {
     // doc: apply params to budget in order to validate it
     Object.assign(this.previous_state, this);
     Object.assign(this, this.params);
-    return this.validateBeforeSave().then(() => {
+    return this.validateBeforeCommit().then(() => {
+      try{ this.beforeUpdate() }catch(e){};
       Server.patch(`${this.model()}/${this.id}`, this.params)
     }).catch(() => Promise.reject());
   };
@@ -65,15 +66,15 @@ class Record {
   };
 
   // === Validations
-  validateBeforeSave(){
+  validateBeforeCommit(){
     var self = this;
     return new Promise((resolve, reject) => {
-      if(!self.beforeSave().some(e => e == false)){
+      if(!self.beforeCommit().some(e => e == false)){
         resolve();
       }else{
         // doc: return indexes of failed validations
         var indexes = [];
-        self.beforeSave().forEach((bfFunction, i) => !bfFunction && indexes.push(i));
+        self.beforeCommit().forEach((bfFunction, i) => !bfFunction && indexes.push(i));
         let error_message = "At least one BeforeSave function failed on positions: " + indexes;
         reject(new Logger('error', error_message));
       }
