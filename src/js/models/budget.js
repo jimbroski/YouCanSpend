@@ -34,7 +34,6 @@ class Budget extends Record {
   };
 
   // Custom Methods
-
   recalculate_balance(){
     if(this.previous_state != undefined){
       this.params.balance = this.balance - (this.previous_state.amount - this.amount);

@@ -1,3 +1,5 @@
+import TimeChecker from '../services/time_checker';
+
 class BudgetIndexView {
   static all(budgets){
     return `
@@ -29,7 +31,7 @@ class BudgetIndexView {
   static current(budget){
     return `
       <div class="amount text-center"><i class="material-icons">receipt</i> $${budget.balance}</div>
-      <div class="name text-center">on ${budget.name} <i id="budget_edit" class="material-icons">edit</i></div>`;
+      <div class="name text-center">on <strong>${budget.name}</strong> in ${TimeChecker.daysInMonthLeft()} days. <i id="budget_edit" class="material-icons">edit</i></div>`;
   };
 
   static add_new_fab(){

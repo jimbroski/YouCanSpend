@@ -2,7 +2,9 @@ import Server from '../app/server';
 import Logger from '../app/logger';
 
 class TimeChecker {
-  constructor(){};
+  constructor(){
+    this.time_now = new Date();
+  };
 
   monthSinceLastVisit(){
     return new Promise((resolve, reject) => {
@@ -12,6 +14,8 @@ class TimeChecker {
         let getCheckin = Server.get('checkin');
 
         getCheckin.then(values => {
+          this.time_now = new Date(values.time_now);
+
           if(values.time_last != null){
             Promise.all([this.resetBudgetBalance(values), this.upgradeSavingsBalance(values)]).then(() => {
               Server.delete('checkin/time_now');
@@ -60,6 +64,10 @@ class TimeChecker {
     time_now  = new Date(time_now);
     time_last = new Date(time_last); // TODO: Testing date: new Date(1475410092755);
     return (time_now.getMonth() - time_last.getMonth()) + (12 * (time_now.getFullYear() - time_last.getFullYear()));
+  };
+
+  daysInMonthLeft(){
+    return (new Date(this.time_now.getFullYear(), this.time_now.getMonth(), 0).getDate()) - this.time_now.getDate();
   };
 
 };
