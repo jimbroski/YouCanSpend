@@ -13,6 +13,7 @@ class Server {
 
     // Set instance variables
     this.current_user = this.authorizeAndReturn();
+    this.server_time = firebase.database.ServerValue.TIMESTAMP;
     this.db = firebase.database().ref(this.current_user);
   };
 
@@ -26,6 +27,10 @@ class Server {
     return new Promise((resolve, reject) => {
       self.db.child(path).once('value', snapshot => resolve(snapshot.val()));
     });
+  };
+
+  set(path, params){
+    return this.db.child(path).set(params);
   };
 
   post(path, params){

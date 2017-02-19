@@ -1,21 +1,29 @@
+import Controller from '../app/controller';
 import Routes from '../routes';
+import TimeChecker from '../services/time_checker';
 
-class AppController {
+class AppController extends Controller {
   constructor(){
-    this.current_route = false;
+    super();
+    this.current_route = '';
 
+    this.initializeVariables({
+      time_checked: TimeChecker.monthSinceLastVisit()
+    });
+  };
+
+  afterInit(){
+    // doc: default framework function
     this.bindFunctions();
     this.startup();
-  }
+  };
 
   // Constructor Functions
   bindFunctions(){
     Array.from(document.querySelectorAll('[data-route]')).forEach(a => a.addEventListener("click", e => {
       this.go_to(a.getAttribute('data-route'));
     }));
-
-    // TODO Listen to route changes?
-  }
+  };
 
   startup(){
     // Go To Root
