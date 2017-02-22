@@ -51,6 +51,11 @@ class Budget extends Record {
   static list_of_icons(){
     return ['shopping_basket'];
   };
+
+  // doc: Required because of Uglify
+  static model(){
+    return "Budget";
+  };
 }
 
 export default Budget;

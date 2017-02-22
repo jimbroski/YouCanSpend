@@ -5,9 +5,6 @@ class Record {
   // ================
   // Class (static) Methods
   // ================
-  static model(){
-    return this.name;
-  };
 
   // === Queries
   static all(){
@@ -15,12 +12,16 @@ class Record {
     // doc: Request data from the server/database for the given model
     return Server.get(this.model()).then(records => {
       this.previous_values = this;
-      records = Object.keys(records).map(key => {
-        // doc: Assign record ID and create an instance of the current model
-        let record = records[key];
-        record.id = key;
-        return new this(record);
-      });
+      if(records){
+        records = Object.keys(records).map(key => {
+          // doc: Assign record ID and create an instance of the current model
+          let record = records[key];
+          record.id = key;
+          return new this(record);
+        });
+      }else{
+        records = [];
+      }
       return records;
     });
   };
@@ -41,7 +42,7 @@ class Record {
   };
 
   model(){
-    return this.constructor.name;
+    return this.constructor.model();
   };
 
   // === CRUD

@@ -28,6 +28,11 @@ class Transaction extends Record {
       budget.update();
     })
   };
+
+  // doc: Required because of Uglify
+  static model(){
+    return "Transaction";
+  };
 }
 
 export default Transaction;
