@@ -17,7 +17,7 @@ class TransactionNew extends Controller{
     this.renderTemplates();
     this.bindFunctions();
 
-    focusInput();
+    this.focusInput();
   };
 
   // Constructor Methods
