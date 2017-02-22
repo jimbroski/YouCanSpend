@@ -31,7 +31,7 @@ class BudgetIndexView {
   static current(budget){
     return `
       <div class="amount text-center">
-        <button class="mdl-button mdl-js-button mdl-button--icon">
+        <button id="transaction_index" class="mdl-button mdl-js-button mdl-button--icon">
           <i class="material-icons">receipt</i>
         </button>
         &nbsp;$${budget.balance}

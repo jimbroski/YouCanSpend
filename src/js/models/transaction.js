@@ -8,6 +8,8 @@ class Transaction extends Record {
     this.amount = params.amount;
     this.name = params.name;
     this.budget_id = params.budget_id;
+
+    this.item_selector = `transaction_item_${this.id}`
   };
 
   beforeCommit(){
