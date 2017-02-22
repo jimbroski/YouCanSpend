@@ -48,6 +48,8 @@ class Record {
   // === CRUD
   save(){
     return this.validateBeforeCommit().then(() => {
+      this.params.created_at = Server.server_time;
+      this.params.updated_at = Server.server_time;
       Server.post(this.model(), this.params)
     }).catch(() => Promise.reject());
   };
@@ -58,6 +60,7 @@ class Record {
     Object.assign(this, this.params);
     return this.validateBeforeCommit().then(() => {
       try{ this.beforeUpdate() }catch(e){};
+      this.params.updated_at = Server.server_time;
       Server.patch(`${this.model()}/${this.id}`, this.params)
     }).catch(() => Promise.reject());
   };
