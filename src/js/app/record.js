@@ -5,6 +5,19 @@ class Record {
   // ================
   // Class (static) Methods
   // ================
+  static newInstanceWithKeyAsId(records){
+    if(records){
+      records = Object.keys(records).map(key => {
+        // doc: Assign record ID and create an instance of the current model
+        let record = records[key];
+        record.id = key;
+        return new this(record);
+      });
+    }else{
+      records = [];
+    }
+    return records;
+  };
 
   // === Queries
   static all(){
@@ -12,17 +25,7 @@ class Record {
     // doc: Request data from the server/database for the given model
     return Server.get(this.model()).then(records => {
       this.previous_values = this;
-      if(records){
-        records = Object.keys(records).map(key => {
-          // doc: Assign record ID and create an instance of the current model
-          let record = records[key];
-          record.id = key;
-          return new this(record);
-        });
-      }else{
-        records = [];
-      }
-      return records;
+      return this.newInstanceWithKeyAsId(records);
     });
   };
 
@@ -30,6 +33,12 @@ class Record {
     return Server.get(`${this.model()}/${id}`).then(record => {
       record.id = id;
       return new this(record);
+    });
+  };
+
+  static from_to(path, child, from_val, to_val){
+    return Server.db.child(path).orderByChild(child).startAt(from_val).endAt(to_val).once('value').then(records => {
+      return this.newInstanceWithKeyAsId(records.val());
     });
   };
 
