@@ -16,6 +16,8 @@ class TransactionNew extends Controller{
     // doc: default framework function
     this.renderTemplates();
     this.bindFunctions();
+
+    focusInput();
   };
 
   // Constructor Methods
@@ -40,6 +42,10 @@ class TransactionNew extends Controller{
         App.go_to("BudgetIndex") /* TODO add budget to URL to preload current_budget*/
       })
       .catch(() => {});
+  };
+
+  focusInput(){
+    document.querySelector('#transaction_amount_input').focus();
   };
 
 }
