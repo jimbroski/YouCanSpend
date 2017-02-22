@@ -48,6 +48,8 @@ class Record {
   constructor(params){
     this.params = params;
     this.previous_state = {};
+    this.created_at = params.created_at
+    this.updated_at = params.updated_at
   };
 
   model(){
