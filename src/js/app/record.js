@@ -46,11 +46,11 @@ class Record {
   };
 
   // === CRUD
-  save(){
+  save(path = this.model()){
     return this.validateBeforeCommit().then(() => {
       this.params.created_at = Server.server_time;
       this.params.updated_at = Server.server_time;
-      Server.post(this.model(), this.params)
+      Server.post(path, this.params)
     }).catch(() => Promise.reject());
   };
 

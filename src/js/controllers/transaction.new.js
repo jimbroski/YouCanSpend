@@ -37,7 +37,7 @@ class TransactionNew extends Controller{
       name: document.querySelector('#transaction_name_input').value,
       budget_id: this.budget_id
     });
-    this.transaction.save()
+    this.transaction.save(`Transaction/${this.budget_id}`)
       .then(() => {
         App.go_to("BudgetIndex") /* TODO add budget to URL to preload current_budget*/
       })
