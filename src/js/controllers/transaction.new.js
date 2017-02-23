@@ -4,10 +4,11 @@ import Transaction from '../models/transaction';
 import TransactionNewView from '../views/transaction.new.view';
 
 class TransactionNew extends Controller{
-  constructor(budget_id){
+  constructor(params){
     super();
 
-    this.budget_id = budget_id;
+    this.payable = params.payable;
+    this.payable_id = params.payable_id;
 
     this.initializeVariables({});
   };
@@ -35,9 +36,10 @@ class TransactionNew extends Controller{
     this.transaction = new Transaction({
       amount: document.querySelector('#transaction_amount_input').value,
       name: document.querySelector('#transaction_name_input').value,
-      budget_id: this.budget_id
+      payable_id: this.payable_id,
+      payable: this.payable
     });
-    this.transaction.save(`Transaction/${this.budget_id}`)
+    this.transaction.save(`Transaction/${this.payable}/${this.payable_id}`)
       .then(() => {
         App.go_to("BudgetIndex") /* TODO add budget to URL to preload current_budget*/
       })

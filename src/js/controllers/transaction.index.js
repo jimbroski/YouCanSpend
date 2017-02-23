@@ -5,11 +5,13 @@ import TransactionIndexView from '../views/transaction.index.view';
 import TimeHelper from '../app/time_helper';
 
 class TransactionIndex extends Controller {
-  constructor(budget_id){
+  constructor(params){
     super();
-    this.budget_id = budget_id;
+    this.payable = params.payable;
+    this.payable_id = params.payable_id;
+
     this.initializeVariables({
-      transactions: Transaction.from_to(`Transaction/${this.budget_id}`, 'created_at', TimeHelper.beginning_of_the_month(), TimeHelper.end_of_the_month())
+      transactions: Transaction.from_to(`Transaction/${this.payable}/${this.payable_id}`, 'created_at', TimeHelper.beginning_of_the_month(), TimeHelper.end_of_the_month())
     });
   };
 
