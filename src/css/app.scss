@@ -20,6 +20,12 @@ main {
 .padding-30 {
   padding: 30px;
 }
+.list-header {
+  padding: 2px 16px;
+  border-bottom: 1px solid #dedede;
+  color: #666;
+  font-weight: 600;
+}
 
 // Layout
 .mdl-layout__header-row {

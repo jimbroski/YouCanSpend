@@ -1,6 +1,7 @@
 class TransactionIndexView {
   static all(transactions){
     return `
+      <div class="list-header">Current Period</div>
       <div class="mdl-list page-content">
         ${transactions.map(transaction => this.templateListItem(transaction)).join('')}
       </div>`;
