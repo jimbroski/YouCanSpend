@@ -1,5 +1,6 @@
 import Record from "../app/record.js";
 import Budget from '../models/budget';
+import Saving from '../models/saving';
 
 class Transaction extends Record {
   constructor(params){
@@ -20,17 +21,28 @@ class Transaction extends Record {
       this.validates_numerical([this.amount]),
       this.validates_string([this.name]),
       this.validates_max_length_of(25, [this.name]),
-      this.updateBudgetBalance()
-      // this.updateSavingBalance()
+      this.updateBudgetBalance(),
+      this.updateSavingBalance()
       // TODO validates_association_presence([this.payable_id])
     ];
   };
 
   updateBudgetBalance(){
-    (this.payable == 'Budget') && Budget.find(this.payable_id).then(budget => {
-      budget.params = {balance: (budget.balance - this.amount)};
-      budget.update();
-    })
+    if(this.payable == 'Budget'){
+      Budget.find(this.payable_id).then(budget => {
+        budget.params = {balance: (budget.balance - this.amount)};
+        budget.update();
+      })
+    }
+  };
+
+  updateSavingBalance(){
+    if(this.payable == 'Saving') {
+      Saving.find(this.payable_id).then(saving => {
+        saving.params = {balance: (saving.balance - this.amount)};
+        saving.update();
+      })
+    };
   };
 
   // doc: Required because of Uglify
