@@ -49,6 +49,7 @@ class BudgetIndex extends Controller {
   };
 
   renderCurrentBudget(){
+    document.querySelector('#amount_current').innerHTML = '';
     document.querySelector('#amount_current').innerHTML = BudgetIndexView.current(this.current_budget);
     document.querySelector('#budget_edit').addEventListener("click", e => App.go_to('BudgetEdit', this.current_budget.id));
     document.querySelector('#add_new_fab').innerHTML = BudgetIndexView.add_new_fab();

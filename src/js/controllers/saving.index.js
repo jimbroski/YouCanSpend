@@ -49,6 +49,7 @@ class SavingIndex extends Controller {
   };
 
   renderCurrentSaving(){
+    document.querySelector('#amount_current').innerHTML = '';
     document.querySelector('#amount_current').innerHTML = SavingIndexView.current(this.current_saving);
     document.querySelector('#saving_edit').addEventListener("click", e => App.go_to('SavingEdit', this.current_saving.id));
     document.querySelector('#add_new_fab').innerHTML = SavingIndexView.add_new_fab();
