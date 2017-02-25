@@ -1,7 +1,7 @@
 import TimeChecker from '../services/time_checker';
 
 class TimeHelper {
-  cosntructor(){};
+  constructor(){};
 
   beginning_of_the_month(date = TimeChecker.time_now){
     date = new Date(date)

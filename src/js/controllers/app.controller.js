@@ -1,5 +1,6 @@
 import Controller from '../app/controller';
 import Routes from '../routes';
+import Server from '../app/server';
 import TimeChecker from '../services/time_checker';
 
 class AppController extends Controller {
@@ -7,8 +8,10 @@ class AppController extends Controller {
     super();
     this.current_route = '';
 
-    this.initializeVariables({
-      time_checked: TimeChecker.monthSinceLastVisit()
+    Server.authorize().then(() => {
+      this.initializeVariables({
+        time_checked: TimeChecker.monthSinceLastVisit()
+      });
     });
   };
 

@@ -1,4 +1,6 @@
 import * as firebase from "firebase";
+import AppHelper from './app_helper';
+import Logger from './logger';
 
 class Server {
   constructor(){
@@ -10,17 +12,36 @@ class Server {
       storageBucket: "youcanspend-test.appspot.com",
       messagingSenderId: "38042327733"
     });
+  };
 
-    // Set instance variables
-    this.current_user = this.authorizeAndReturn();
+  authorize(){
+    var self = this;
+    return new Promise((resolve, reject) => {
+      firebase.auth().onAuthStateChanged(function(user) {
+        if(user){
+          new Logger('info', 'User found.');
+          self.assignServerVariables();
+          resolve(firebase.auth().currentUser.uid);
+        }else{
+          // Create new user
+          let generated_pw = AppHelper.randomKey(),
+              generated_user = AppHelper.randomDateKey() + '-' + AppHelper.randomKey(),
+              generated_email = generated_user + '@noemail.com',
+              generated_id = generated_user + '-' + generated_pw;
+
+          firebase.auth().createUserWithEmailAndPassword(generated_email, generated_pw).then(() => {
+            new Logger('info', 'New user created.');
+          })
+        }
+      });
+    });
+  };
+
+  assignServerVariables(){
+    this.current_user = firebase.auth().currentUser.uid;
     this.server_time = firebase.database.ServerValue.TIMESTAMP;
     this.db = firebase.database().ref(this.current_user);
-  };
-
-  authorizeAndReturn(){
-    // TODO Implement proper authorization (on Firebase)
-    return 'random_user_id_123'
-  };
+  }
 
   get(path){
     var self = this;
