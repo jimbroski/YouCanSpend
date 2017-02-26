@@ -7,6 +7,8 @@ class Server {
     // Initialize Firebase
     if(process.env.NODE_ENV == 'production'){
       console.log('Initialize Production');
+      console.log(process.env);
+      console.log(process);
       firebase.initializeApp({
         apiKey: process.env.apiKey,
         authDomain: process.env.authDomain,
