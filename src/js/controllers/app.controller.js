@@ -8,6 +8,14 @@ class AppController extends Controller {
     super();
     this.current_route = '';
 
+    console.log(process.env);
+    if(process.env.NODE_ENV){
+      console.log('test');
+      console.log(process.env);
+    }else{
+      console.log('dev');
+    }
+
     this.initAfterAuthorize();
   };
 
