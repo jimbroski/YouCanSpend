@@ -12,6 +12,8 @@ class Server {
       storageBucket: "youcanspend-test.appspot.com",
       messagingSenderId: "38042327733"
     });
+
+    this.auth = firebase.auth();
   };
 
   authorize(){
@@ -23,24 +25,17 @@ class Server {
           self.assignServerVariables();
           resolve(firebase.auth().currentUser.uid);
         }else{
-          // Create new user
-          let generated_pw = AppHelper.randomKey(),
-              generated_user = AppHelper.randomDateKey() + '-' + AppHelper.randomKey(),
-              generated_email = generated_user + '@noemail.com',
-              generated_id = generated_user + '-' + generated_pw;
-
-          firebase.auth().createUserWithEmailAndPassword(generated_email, generated_pw).then(() => {
-            new Logger('info', 'New user created.');
-          })
+          reject();
         }
       });
     });
   };
 
   assignServerVariables(){
-    this.current_user = firebase.auth().currentUser.uid;
+    this.current_user = firebase.auth().currentUser;
+    this.current_uid = this.current_user.uid;
     this.server_time = firebase.database.ServerValue.TIMESTAMP;
-    this.db = firebase.database().ref(this.current_user);
+    this.db = firebase.database().ref(this.current_uid);
   }
 
   get(path){

@@ -8,15 +8,25 @@ class AppController extends Controller {
     super();
     this.current_route = '';
 
-    Server.authorize().then(() => {
+    this.initAfterAuthorize();
+  };
+
+  initAfterAuthorize(){
+    Server.authorize()
+    .then(() => {
       this.initializeVariables({
         time_checked: TimeChecker.monthSinceLastVisit()
       });
+    })
+    .catch(() => {
+      this.logged_in = false;
+      this.go_to('SettingsNew');
     });
   };
 
   afterInit(){
     // doc: default framework function
+    this.logged_in = true;
     this.bindFunctions();
     this.startup();
   };
