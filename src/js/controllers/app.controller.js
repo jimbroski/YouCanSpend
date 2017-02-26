@@ -11,7 +11,7 @@ class AppController extends Controller {
     console.log(process.env);
     if(process.env.NODE_ENV){
       console.log('test');
-      console.log(process.env);
+      console.log(process.env.NODE_ENV);
     }else{
       console.log('dev');
     }

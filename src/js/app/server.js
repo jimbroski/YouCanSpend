@@ -5,13 +5,25 @@ import Logger from './logger';
 class Server {
   constructor(){
     // Initialize Firebase
-    firebase.initializeApp({
-      apiKey: "AIzaSyAoVdn36pNYEN6HHkuAGkccUySIgY0ESqY",
-      authDomain: "youcanspend-test.firebaseapp.com",
-      databaseURL: "https://youcanspend-test.firebaseio.com",
-      storageBucket: "youcanspend-test.appspot.com",
-      messagingSenderId: "38042327733"
-    });
+    if(process.env.NODE_ENV == 'production'){
+      console.log('Initialize Production');
+      firebase.initializeApp({
+        apiKey: process.env.apiKey,
+        authDomain: process.env.authDomain,
+        databaseURL: process.env.databaseURL,
+        storageBucket: process.env.storageBucket,
+        messagingSenderId: process.env.messagingSenderId
+      });
+    }else{
+      firebase.initializeApp({
+        apiKey: "AIzaSyAoVdn36pNYEN6HHkuAGkccUySIgY0ESqY",
+        authDomain: "youcanspend-test.firebaseapp.com",
+        databaseURL: "https://youcanspend-test.firebaseio.com",
+        storageBucket: "youcanspend-test.appspot.com",
+        messagingSenderId: "38042327733"
+      });
+    }
+
 
     this.auth = firebase.auth();
   };
