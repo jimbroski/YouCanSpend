@@ -28,7 +28,7 @@ This is a complete rebuilt of an app I built before. The goal of this app was to
 - [ ] Adjust automatic saving transactions:
   - [ ] add more descriptive labels (add month names)
   - [ ] set `created_at` to be the first of the particular month (and `updated_at` today)
-- [ ] Switch Firebase config from testing to production (use environment variables to use different ones in dev and on production)
+- [x] Switch Firebase config from testing to production (use environment variables to use different ones in dev and on production)
 
 - [ ] Split out all firebase specific server logic into a single `ServerAdapterFirebase`
 - [ ] Create a new `ServerAdapterLocal` to act as the default storage on localStorage and without authentication
