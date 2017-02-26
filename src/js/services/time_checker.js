@@ -75,7 +75,7 @@ class TimeChecker {
   };
 
   daysInMonthLeft(){
-    return (new Date(this.time_now.getFullYear(), this.time_now.getMonth(), 0).getDate()) - this.time_now.getDate();
+    return (new Date(this.time_now.getFullYear(), this.time_now.getMonth() + 1, 0).getDate()) - this.time_now.getDate();
   };
 
 };
