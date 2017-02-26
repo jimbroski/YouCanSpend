@@ -4,7 +4,7 @@
 
 > The simplest, most straight forward tool for tracking spendings, budgets, savings and staying on top of your finances.
 
-You can add budgets and savings. On the first of the month, each budget will reset to it's original value. Each saving has a `rate`. On the first of each of each month the saving is increased by the given `rate` amount. After selecting any budget or saving you are able to track spendings on each particular one of them. The app will tell you how much money you have left to spend until the end of the month. 
+You can add budgets and savings. On the first of the month, each budget will reset to it's original value. Each saving has a `rate`. On the first of each of each month the saving is increased by the given `rate` amount. After selecting any budget or saving you are able to track spendings on each particular one of them. The app will tell you how much money you have left to spend until the end of the month.
 
 ## How it's built
 
@@ -14,6 +14,7 @@ This is a complete rebuilt of an app I built before. The goal of this app was to
 
 > Things that I want to get done but most likely won't.
 
+- Switch Firebase config from testing to production (use environment variables to use different ones in dev and on production)
 - Apply a max width to the view
 - Add loading spinner when signing in/up
 - Better feedback on signup/signin/settings forms (email address already taken, password wrong etc.)
