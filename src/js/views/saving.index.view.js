@@ -8,7 +8,7 @@ class SavingIndexView {
 
         <div id="saving_new" data-route="SavingNew" class="saving_list_item mdl-list__item">
           <span class="mdl-list__item-primary-content">
-            <i class="material-icons mdl-list__item-avatar">add</i>
+            <i class="material-icons mdl-list__item-avatar">add_circle</i>
             <span>Add new Saving</span>
           </span>
         </div>

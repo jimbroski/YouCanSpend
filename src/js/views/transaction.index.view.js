@@ -11,11 +11,12 @@ class TransactionIndexView {
     return `
       <div id="${transaction.item_selector}" class="mdl-list__item mdl-list__item--two-line">
         <span class="mdl-list__item-primary-content">
-          <span><strong>$${transaction.amount}</strong> on ${transaction.name}</span>
+          <i class="material-icons mdl-list__item-avatar">monetization_on</i>
+          <span><strong>${transaction.amount}</strong> on ${transaction.name}</span>
           <span class="mdl-list__item-sub-title">${new Date(transaction.created_at).toDateString()}</span>
         </span>
         <span class="mdl-list__item-secondary-content">
-          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">mode-edit</i></a>
+          <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">mode_edit</i></a>
         </span>
       </div>`;
   };
