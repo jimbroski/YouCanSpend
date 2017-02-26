@@ -24,10 +24,15 @@ class TransactionIndex extends Controller {
   // Constructor Methods
   renderTemplates(){
     document.querySelector('#root').innerHTML = TransactionIndexView.all(this.transactions);
+    componentHandler.upgradeAllRegistered();
   };
 
   bindFunctions(){
-    componentHandler.upgradeAllRegistered();
+    this.transactions.forEach(transaction => {
+      document.querySelector('#' + transaction.item_selector + ' .transaction-edit--js').addEventListener("click", e => {
+        App.go_to('TransactionEdit', {id: transaction.id, payable: this.payable, payable_id: this.payable_id})
+      });
+    });
   };
 
   // Instance Methods

@@ -29,8 +29,8 @@ class Record {
     });
   };
 
-  static find(id){
-    return Server.get(`${this.model()}/${id}`).then(record => {
+  static find(id, path = this.model()){
+    return Server.get(`${path}/${id}`).then(record => {
       record.id = id;
       return new this(record);
     });
@@ -65,19 +65,19 @@ class Record {
     }).catch(() => Promise.reject());
   };
 
-  update(){
+  update(path = this.model()){
     // doc: apply params to budget in order to validate it
     Object.assign(this.previous_state, this);
     Object.assign(this, this.params);
     return this.validateBeforeCommit().then(() => {
       try{ this.beforeUpdate() }catch(e){};
       this.params.updated_at = Server.server_time;
-      Server.patch(`${this.model()}/${this.id}`, this.params)
+      Server.patch(`${path}/${this.id}`, this.params)
     }).catch(() => Promise.reject());
   };
 
-  destroy(){
-    return Server.delete(`${this.model()}/${this.id}`);
+  destroy(path = this.model()){
+    return Server.delete(`${path}/${this.id}`);
   };
 
   // === Validations
