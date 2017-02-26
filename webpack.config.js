@@ -33,8 +33,7 @@ const config = {
     extractCSS,
     new webpack.DefinePlugin({
       'process.env': {
-        'something': JSON.stringify(process.env),
-        'ENV': JSON.stringify(require(__dirname + '/src/development' + '.config.js')),
+        'ENV': JSON.stringify(process.env),
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV || "development")
       }
     })

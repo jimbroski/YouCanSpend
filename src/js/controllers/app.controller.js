@@ -7,15 +7,6 @@ class AppController extends Controller {
   constructor(){
     super();
     this.current_route = '';
-
-    console.log(process.env);
-    if(process.env.NODE_ENV){
-      console.log('test');
-      console.log(process.env.NODE_ENV);
-    }else{
-      console.log('dev');
-    }
-
     this.initAfterAuthorize();
   };
 

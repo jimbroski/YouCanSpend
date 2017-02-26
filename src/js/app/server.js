@@ -6,17 +6,16 @@ class Server {
   constructor(){
     // Initialize Firebase
     if(process.env.NODE_ENV == 'production'){
-      console.log('Initialize Production');
       console.log(process.env);
-      console.log(process);
       firebase.initializeApp({
-        apiKey: process.env.apiKey,
-        authDomain: process.env.authDomain,
-        databaseURL: process.env.databaseURL,
-        storageBucket: process.env.storageBucket,
-        messagingSenderId: process.env.messagingSenderId
+        apiKey: process.env.ENV.apiKey,
+        authDomain: process.env.ENV.authDomain,
+        databaseURL: process.env.ENV.databaseURL,
+        storageBucket: process.env.ENV.storageBucket,
+        messagingSenderId: process.env.ENV.messagingSenderId
       });
     }else{
+      console.log('Development');
       firebase.initializeApp({
         apiKey: "AIzaSyAoVdn36pNYEN6HHkuAGkccUySIgY0ESqY",
         authDomain: "youcanspend-test.firebaseapp.com",
