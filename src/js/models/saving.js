@@ -7,7 +7,7 @@ class Saving extends Record {
     this.balance = params.balance;
     this.rate = params.rate;
     this.name = params.name;
-    this.icon = "shopping_basket"; // TODO adjustable
+    this.icon = params.icon; 
 
     this.item_selector = `saving_item_${this.id}`
   };
@@ -38,7 +38,7 @@ class Saving extends Record {
 
   // Class Methods
   static list_of_icons(){
-    return ['shopping_basket'];
+    return ['crop_square', 'shopping_basket', 'pets', 'card_giftcard', 'cake', 'school', 'kitchen', 'free_breakfast', 'local_bar', 'flight', 'restaurant', 'brush', 'phonelink', 'weekend', 'business', 'loyalty', 'group', 'home', 'healing', 'favorite', 'person'];
   };
 
   // doc: Required because of Uglify

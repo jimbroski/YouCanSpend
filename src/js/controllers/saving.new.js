@@ -31,7 +31,8 @@ class SavingNew extends Controller{
     this.saving = new Saving({
       rate: document.querySelector('#Saving_rate').value,
       balance: document.querySelector('#Saving_balance').value,
-      name: document.querySelector('#Saving_name').value
+      name: document.querySelector('#Saving_name').value,
+      icon: "crop_square" // TODO adjustable
     });
 
     this.saving.save()
