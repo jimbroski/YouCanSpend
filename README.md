@@ -14,21 +14,23 @@ This is a complete rebuilt of an app I built before. The goal of this app was to
 
 > Things that I want to get done but most likely won't.
 
-- Switch Firebase config from testing to production (use environment variables to use different ones in dev and on production)
-- Apply a max width to the view
-- Add loading spinner when signing in/up
-- Better feedback on signup/signin/settings forms (email address already taken, password wrong etc.)
-- Add Settings where you can:
-  - Logout
-  - change email
-  - change password
-  - change timezone
-  - 'Add to Homescreen' button (Android only)
-- Add transactions edit page
-- Split out authentication logic into a SessionsController
-- Adjust automatic saving transactions:
-  - add more descriptive labels (add month names)
-  - set `created_at` to be the first of the particular month (and `updated_at` today)
-- Split out all firebase specific server logic into a single `ServerAdapterFirebase`
-- Create a new `ServerAdapterLocal` to act as the default storage on localStorage and without authentication
-  - Use settings page to signup/signin to switch to using the `ServerAdapterFirebase`
+- [ ] Add transactions edit page
+- [ ] Split out authentication logic into a SessionsController
+- [ ] Add loading spinner when signing in/up
+- [ ] Better feedback on signup/signin/settings forms (email address already taken, password wrong etc.)
+- [ ] Add Settings where you can:
+  - [ ] Logout
+  - [ ] change email
+  - [ ] change password
+  - [ ] change timezone
+  - [ ] 'Add to Homescreen' button (Android only)
+- [ ] Make budget/saving icon editable
+- [ ] Adjust automatic saving transactions:
+  - [ ] add more descriptive labels (add month names)
+  - [ ] set `created_at` to be the first of the particular month (and `updated_at` today)
+- [ ] Switch Firebase config from testing to production (use environment variables to use different ones in dev and on production)
+
+- [ ] Split out all firebase specific server logic into a single `ServerAdapterFirebase`
+- [ ] Create a new `ServerAdapterLocal` to act as the default storage on localStorage and without authentication
+  - [ ] Use settings page to signup/signin to switch to using the `ServerAdapterFirebase`
+- [ ] Optimize view for desktop
