@@ -60,3 +60,11 @@ main {
   right: 20px;
   bottom: 20px;
 }
+
+// MEDIA QUERIES
+@media (min-width: 600px) {
+  .mdl-layout__header-row, #amount_current, main {
+    width: 600px;
+    align-self: center;
+  }
+}
