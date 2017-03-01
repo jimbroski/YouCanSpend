@@ -29,7 +29,7 @@ class Transaction extends Record {
 
   beforeDestroy(){
     // doc: framework methods run before update()
-    return [this.recalculatePayableBalance()]
+    return [this.recalculatePayableOfDeleted()]
   };
 
   recalculatePayableBalance(){
@@ -45,6 +45,14 @@ class Transaction extends Record {
         record.params = {balance: (record.balance + amount_difference)};
         record.update();
       }
+    });
+  };
+
+  recalculatePayableOfDeleted(){
+    var BudgetOrSaving = modelSelector(this.payable);
+    BudgetOrSaving.find(this.payable_id, this.payable).then(record => {
+      record.params = {balance: (Number(record.balance) + Number(this.amount))};
+      record.update();
     });
   };
 

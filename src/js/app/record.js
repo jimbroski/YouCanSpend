@@ -77,10 +77,8 @@ class Record {
   };
 
   destroy(path = this.model()){
-    Object.assign(this.previous_state, this);
-    return Server.delete(`${path}/${this.id}`).then(() => {
-      try{ this.beforeDestroy() }catch(e){};
-    }).catch(() => Promise.reject());
+    try{ this.beforeDestroy() }catch(e){};
+    return Server.delete(`${path}/${this.id}`);
   };
 
   // === Validations
