@@ -72,12 +72,15 @@ class Record {
     return this.validateBeforeCommit().then(() => {
       try{ this.beforeUpdate() }catch(e){};
       this.params.updated_at = Server.server_time;
-      Server.patch(`${path}/${this.id}`, this.params)
+      Server.patch(`${path}/${this.id}`, this.params);
     }).catch(() => Promise.reject());
   };
 
   destroy(path = this.model()){
-    return Server.delete(`${path}/${this.id}`);
+    Object.assign(this.previous_state, this);
+    return Server.delete(`${path}/${this.id}`).then(() => {
+      try{ this.beforeDestroy() }catch(e){};
+    }).catch(() => Promise.reject());
   };
 
   // === Validations

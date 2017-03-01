@@ -1,6 +1,7 @@
 import Record from "../app/record.js";
 import Budget from '../models/budget';
 import Saving from '../models/saving';
+import modelSelector from '../services/model_selector'
 
 class Transaction extends Record {
   constructor(params){
@@ -21,28 +22,30 @@ class Transaction extends Record {
       this.validates_numerical([this.amount]),
       this.validates_string([this.name]),
       this.validates_max_length_of(25, [this.name]),
-      this.updateBudgetBalance(),
-      this.updateSavingBalance()
+      this.recalculatePayableBalance()
       // TODO validates_association_presence([this.payable_id])
     ];
   };
 
-  updateBudgetBalance(){
-    if(this.payable == 'Budget'){
-      Budget.find(this.payable_id).then(budget => {
-        budget.params = {balance: (budget.balance - this.amount)};
-        budget.update();
-      })
-    }
+  beforeDestroy(){
+    // doc: framework methods run before update()
+    return [this.recalculatePayableBalance()]
   };
 
-  updateSavingBalance(){
-    if(this.payable == 'Saving') {
-      Saving.find(this.payable_id).then(saving => {
-        saving.params = {balance: (saving.balance - this.amount)};
-        saving.update();
-      })
-    };
+  recalculatePayableBalance(){
+    var BudgetOrSaving = modelSelector(this.payable);
+    BudgetOrSaving.find(this.payable_id, this.payable).then(record => {
+      if(Object.keys(this.previous_state).length === 0){
+        // doc: New transaction
+        record.params = {balance: (record.balance - this.amount)};
+        record.update();
+      }else{
+        // doc: Update transaction
+        let amount_difference = this.previous_state.amount - this.amount;
+        record.params = {balance: (record.balance + amount_difference)};
+        record.update();
+      }
+    });
   };
 
   // doc: Required because of Uglify

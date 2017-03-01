@@ -38,16 +38,15 @@ class TransactionEdit extends Controller{
       amount: document.querySelector('#transaction_amount_input').value,
       name: document.querySelector('#transaction_name_input').value
     }
-
     this.transaction.update(this.association_path)
-      .then(() => App.go_to('TransactionIndex', {payable: this.payable, payable_id: this.payable_id}))
+      .then(() => App.go_to(`${this.payable}Index`))
       .catch(() => {});
   };
 
   destroyTransaction(){
     if(confirm("Are you sure you want to delete this record? (This can't be undone!)")){
       this.transaction.destroy(this.association_path).then(e => {
-        App.go_to('TransactionIndex', {payable: this.payable, payable_id: this.payable_id})
+        App.go_to(`${this.payable}Index`)
       }).catch(e => new Logger('error', `Could not delete budget ${this.transaction.id}`));
     }
   };

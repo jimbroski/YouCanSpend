@@ -41,7 +41,7 @@ class TransactionNew extends Controller{
     });
     this.transaction.save(`Transaction/${this.payable}/${this.payable_id}`)
       .then(() => {
-        (this.payable == "Saving") ? App.go_to("SavingIndex") : App.go_to("BudgetIndex") /* TODO add budget to URL to preload current_budget*/
+        App.go_to(`${this.payable}Index`)
       })
       .catch(() => {});
   };
