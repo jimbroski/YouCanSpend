@@ -1,4 +1,5 @@
 import Record from "../app/record.js";
+import NumHelper from "../app/num_helper";
 
 class Budget extends Record {
   constructor(params){
@@ -36,14 +37,14 @@ class Budget extends Record {
   // Custom Methods
   recalculate_balance(){
     if(this.previous_state != undefined){
-      this.params.balance = this.balance - (this.previous_state.amount - this.amount);
+      this.params.balance = NumHelper.toPrice( this.balance - (this.previous_state.amount - this.amount) );
     };
     return true;
   };
 
   convertToDecimal(){
-    this.params.amount = (Number(this.amount).toFixed(2))/1;
-    this.params.balance = (Number(this.balance).toFixed(2))/1;
+    this.params.amount = NumHelper.toPrice(this.amount);
+    this.params.balance = NumHelper.toPrice(this.balance);
     return true;
   };
 
