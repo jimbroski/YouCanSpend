@@ -19,6 +19,7 @@ This is a complete rebuilt of an app I built before. The goal of this app was to
 - [ ] Better feedback on signup/signin/settings forms (email address already taken, password wrong etc.)
 - [ ] Split out authentication logic into a SessionsController
 - [ ] Add Settings where you can:
+  - [ ] show current app version number
   - [ ] Logout
   - [ ] change email
   - [ ] change password

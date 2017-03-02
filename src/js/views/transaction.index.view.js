@@ -16,7 +16,9 @@ class TransactionIndexView {
           <span class="mdl-list__item-sub-title">${new Date(transaction.created_at).toDateString()}</span>
         </span>
         <span class="mdl-list__item-secondary-content">
-          <a class="transaction-edit--js mdl-list__item-secondary-action" href="#"><i class="material-icons">mode_edit</i></a>
+          <button class="transaction-edit--js mdl-button mdl-js-button mdl-button--icon">
+            <i class="material-icons">mode_edit</i>
+          </button>
         </span>
       </div>`;
   };
